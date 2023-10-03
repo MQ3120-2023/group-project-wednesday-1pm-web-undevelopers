@@ -28,6 +28,20 @@
   color: #61dafb;
 }
 
+
+.navbar {
+  background-color: #282c34;
+  color: white;  
+}
+
+.nav-link {
+  margin-right: 20px; /* Adjust the value as needed */
+}
+
+.nav-link:last-child {
+  margin-right: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
