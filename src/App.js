@@ -38,7 +38,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/fill" element={<Menu/>} />
+        <Route path="/menu" element={<Menu/>} />
       </Routes>
     </Router>
     </div>
