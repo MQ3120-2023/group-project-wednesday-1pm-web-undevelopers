@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <h1>Welcome we show food here</h1>
       <RecipeList />
     </div>
   );
@@ -30,12 +29,8 @@ function App() {
         <nav className="navbar">
           <h1>Our food shower</h1>
           <div className="nav-links">
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-            <Link className="nav-link" to="/menu">
-              Menu
-            </Link>
+            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/menu">Menu</Link>
           </div>
         </nav>
         <Routes>
