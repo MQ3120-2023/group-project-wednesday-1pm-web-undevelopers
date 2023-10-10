@@ -11,7 +11,15 @@ app.get("/", (req, res) => {
     res.send('<h1>Welcome to the backend</h1>');
 });
 
-
+app.get("/api/recipe/:id", (req, res) => {
+    const id = req.params.id; // The id is a string, so we need to convert it to a number
+    const recipe = data.recipe.find(r => r.id === id); // Find the product with the given id  returns true or false
+    if (recipe) {
+        res.json(recipe); // if true send the product as JSON
+    } else {
+        res.status(404).send("Product not found."); // if false send a 404 error
+    }
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

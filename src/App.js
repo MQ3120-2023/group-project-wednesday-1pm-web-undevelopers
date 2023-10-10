@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import RecipeList from "./components/RecipeList";
+import RecipeDetails from "./components/RecipeDetails";
 
 import axios from "axios";
 import React, { useState } from "react";
@@ -36,6 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
         </Routes>
       </Router>
     </div>

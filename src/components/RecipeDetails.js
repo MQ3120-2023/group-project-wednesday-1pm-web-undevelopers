@@ -1,7 +1,11 @@
 import { useParams } from "react-router-dom";
 
 const RecipeDetails = () => {
-    <p>Hola</p>
+    return(
+        <div>
+            <p>Hola</p>
+        </div>
+    );
 };
 
 export default RecipeDetails;

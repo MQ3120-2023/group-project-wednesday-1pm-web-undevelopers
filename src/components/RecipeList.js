@@ -2,6 +2,7 @@ import "../styling/RecipeList.css";
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const RecipeList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,12 +32,15 @@ const RecipeList = () => {
         placeholder="Search for recipes..."
       />
       {recipes.length > 0 ? (
-        recipes.map((recipe) => (
-          <div key={recipe.idMeal} className="recipe-card">
-            <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-            <h2>{recipe.strMeal}</h2>
-            {/* Add more details as needed */}
-          </div>
+
+        recipes.map((r) => (
+          <Link to={`/recipe/` + r.idMeal} key={r.idMeal} className="recipe-link">
+            <div key={r.idMeal} className="recipe-card">
+              <img src={r.strMealThumb} alt={r.strMeal} />
+              <h2>{r.strMeal}</h2>
+              {/* Add more details as needed */}
+            </div>
+          </Link>
         ))
       ) : (<p>No recipes found for {searchTerm}</p>)}
     </div>
