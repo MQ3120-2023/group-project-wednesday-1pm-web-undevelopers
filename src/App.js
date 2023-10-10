@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import RecipeList from './components/RecipeList';
 
 import axios from 'axios'
 import React, { useState } from "react";
 import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom"
+
 
 
 const Home = () => {
@@ -16,12 +18,13 @@ const Home = () => {
 }
 
 const Menu = () => {
-  return(
+  return (
     <div>
-      <h1>Idk how to fetch the api yet</h1>
+      <h1>Recipes</h1>
+      <RecipeList searchQuery="chicken" /> {/* Provide the default search query or an empty string */}
     </div>
   );
-}
+};
 
 function App() {
   return (
