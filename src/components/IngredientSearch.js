@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const RecipeList = () => {
+const IngredientSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +12,7 @@ const RecipeList = () => {
     const fetchRecipes = async () => {
       try {
         const response = await axios.get(
-          `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
+          `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`
         );
         setRecipes(response.data.meals || []);
       } catch (error) {
@@ -22,17 +22,17 @@ const RecipeList = () => {
     fetchRecipes();
   }, [searchTerm]);
 
+  // Logic to paginate recipes
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="recipe-container">
-      <h1>Search By Name</h1>
+      <h1>Search By Ingredient</h1>
       <input
         type="text"
         value={searchTerm}
@@ -42,7 +42,7 @@ const RecipeList = () => {
       {currentRecipes.length > 0 ? (
         currentRecipes.map((r) => (
           <Link to={`/recipe/${r.idMeal}`} key={r.idMeal} className="recipe-link">
-            <div key={r.idMeal} className="recipe-card">
+            <div className="recipe-card">
               <img src={r.strMealThumb} alt={r.strMeal} />
               <h2>{r.strMeal}</h2>
               {/* Add more details as needed */}
@@ -53,17 +53,20 @@ const RecipeList = () => {
         <p>No recipes found for {searchTerm}</p>
       )}
 
-      {recipes.length > recipesPerPage && (
-        <div className="pagination">
-          {[...Array(Math.ceil(recipes.length / recipesPerPage))].map((_, index) => (
-            <button key={index} onClick={() => paginate(index + 1)}>
+      {/* Pagination controls */}
+      <div className="pagination">
+        {Array.from({ length: Math.ceil(recipes.length / recipesPerPage) }).map(
+          (_, index) => (
+            <button key={index + 1} onClick={() => paginate(index + 1)}>
               {index + 1}
             </button>
-          ))}
-        </div>
-      )}
+          )
+        )}
+      </div>
     </div>
   );
 };
 
-export default RecipeList;
+export default IngredientSearch;
+
+
