@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "../styling/RecipeList.css";
+
 
 const RecipeList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -9,6 +11,9 @@ const RecipeList = () => {
   const recipesPerPage = 10;
 
   useEffect(() => {
+    // Reset current page to 1 whenever the search term changes
+    setCurrentPage(1);
+
     const fetchRecipes = async () => {
       try {
         const response = await axios.get(
