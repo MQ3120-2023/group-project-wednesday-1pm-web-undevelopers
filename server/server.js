@@ -7,8 +7,13 @@ app.use(cors());
 app.use(express.json());
 
 
+
 app.get("/", (req, res) => {
     res.send('<h1>Welcome to the backend</h1>');
+});
+
+app.get("/api/recipe", (req, res) => { 
+
 });
 
 app.get("/api/recipe/:id", (req, res) => {
