@@ -54,3 +54,8 @@
 .recipe-card:hover {
     background-color: #f5f5f5;
 }
+
+.recipe-link{
+    text-decoration: none;
+    color: inherit;
+}

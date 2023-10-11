@@ -32,7 +32,6 @@ const RecipeList = () => {
         placeholder="Search for recipes..."
       />
       {recipes.length > 0 ? (
-
         recipes.map((r) => (
           <Link to={`/recipe/` + r.idMeal} key={r.idMeal} className="recipe-link">
             <div key={r.idMeal} className="recipe-card">
