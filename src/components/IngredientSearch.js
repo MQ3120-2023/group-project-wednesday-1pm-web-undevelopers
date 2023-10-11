@@ -9,6 +9,8 @@ const IngredientSearch = () => {
   const recipesPerPage = 10;
 
   useEffect(() => {
+    // Reset current page to 1 whenever the search term changes
+    setCurrentPage(1);
     const fetchRecipes = async () => {
       try {
         const response = await axios.get(
@@ -41,7 +43,11 @@ const IngredientSearch = () => {
       />
       {currentRecipes.length > 0 ? (
         currentRecipes.map((r) => (
-          <Link to={`/recipe/${r.idMeal}`} key={r.idMeal} className="recipe-link">
+          <Link
+            to={`/recipe/${r.idMeal}`}
+            key={r.idMeal}
+            className="recipe-link"
+          >
             <div className="recipe-card">
               <img src={r.strMealThumb} alt={r.strMeal} />
               <h2>{r.strMeal}</h2>
@@ -68,5 +74,3 @@ const IngredientSearch = () => {
 };
 
 export default IngredientSearch;
-
-

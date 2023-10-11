@@ -9,6 +9,9 @@ const RecipeList = () => {
   const recipesPerPage = 10;
 
   useEffect(() => {
+    // Reset current page to 1 whenever the search term changes
+    setCurrentPage(1);
+
     const fetchRecipes = async () => {
       try {
         const response = await axios.get(
