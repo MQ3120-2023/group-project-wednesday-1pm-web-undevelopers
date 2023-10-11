@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 
 import GetRecipe from "../functions/getRecipe";
+import "../styling/RecipeDetails.css";
 
 const RecipeDetails = () => {
     const { id } = useParams();

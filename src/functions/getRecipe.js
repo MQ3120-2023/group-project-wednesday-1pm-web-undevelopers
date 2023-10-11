@@ -1,30 +1,24 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const recipeURL = '/api/recipe'
-
 const GetRecipe = (id) => {
+    const recipeURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 
-  const [recipe, setRecipe] = useState([]);
+    const [recipe, setRecipe] = useState([]);
 
     useEffect(() => {
-        axios.get(recipeURL)
+        axios.get(recipeURL + id)
             .then(response => {
-                setRecipe(response.data);
+                // Extracting the first meal information from the meals array
+                const mealInfo = response.data.meals && response.data.meals[0];
+                setRecipe(mealInfo);
             })
             .catch(error => {
-                console.error("Error recipes:", error);
+                console.error("Error fetching recipe:", error);
             });
-    }, []);
+    }, [id]);
+    return recipe ;
 
-    //iterate over each recipe in the data array to look for the one with the matching id
-    for (let index = 0; index < recipe.length; index++) {
-        const currentRecipe = recipe[index];
-      if (currentRecipe.id === id) {
-        return currentRecipe;
-      }
-    }
-    return null; // Recipe not found
 }
 
 export default GetRecipe;

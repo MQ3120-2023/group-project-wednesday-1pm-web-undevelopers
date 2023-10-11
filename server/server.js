@@ -12,9 +12,6 @@ app.get("/", (req, res) => {
     res.send('<h1>Welcome to the backend</h1>');
 });
 
-app.get("/api/recipe", (req, res) => { 
-
-});
 
 app.get("/api/recipe/:id", (req, res) => {
     const id = req.params.id; // The id is a string, so we need to convert it to a number
