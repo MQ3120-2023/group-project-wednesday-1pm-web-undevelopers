@@ -40,7 +40,10 @@ const RecipeDetails = () => {
                 ))}
             </ul>
             <h3>Instructions:</h3>
-            <p className="meal-instructions">{recipe.strInstructions}</p>
+            <div className="meal-instructions">
+                {recipe.strInstructions}
+            </div>
+            
         </div>
     );
 };
