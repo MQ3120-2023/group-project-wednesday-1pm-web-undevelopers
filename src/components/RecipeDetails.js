@@ -41,10 +41,13 @@ const RecipeDetails = () => {
             </ul>
             <h3>Instructions:</h3>
             <div className="meal-instructions">
-                {recipe.strInstructions}
+              <ol>
+                {recipe.strInstructions.split("\r\n").map((instr, index) => (
+                  instr.trim() ? <li key={index}>{instr}</li> : null
+                ))}
+              </ol>
             </div>
-            
-        </div>
+      </div>
     );
 };
 
