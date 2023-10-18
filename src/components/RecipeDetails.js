@@ -32,7 +32,7 @@ const RecipeDetails = () => {
     return (
         <div className="recipe-details">
             <img src={recipe.strMealThumb} alt={recipe.strMeal} className="meal-image" />
-            <h1>{recipe.strMeal}</h1>
+            <h1 className="meal-name">{recipe.strMeal}</h1>
             <h3>Ingredients:</h3>
             <ul className = "meal-ingredients"> 
                 {ingredients.map((ingredient, index) => (

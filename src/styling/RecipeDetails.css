@@ -43,8 +43,9 @@
 
 
 .meal-image {
-    max-width: 100%;
+    max-width:60%;
     border-radius: 10px;
+    border: 1px solid #e0e0e0;
 }
 
 
