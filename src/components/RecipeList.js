@@ -11,21 +11,20 @@ const RecipeList = () => {
   const recipesPerPage = 10;
 
   useEffect(() => {
-    // Reset current page to 1 whenever the search term changes
-    setCurrentPage(1);
-
     const fetchRecipes = async () => {
       try {
         const response = await axios.get(
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
         );
-        setRecipes(response.data.meals || []);
+        console.log('Recipes Response:', response.data);  
+        setRecipes(response.data.meals || []);  // recipes state
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching data:", error);  
       }
     };
-    fetchRecipes();
+    fetchRecipes();  
   }, [searchTerm]);
+
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;

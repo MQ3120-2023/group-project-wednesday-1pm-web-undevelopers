@@ -4,8 +4,10 @@ import GetRecipe from "../functions/getRecipe";
 import "../styling/RecipeDetails.css";
 
 const RecipeDetails = () => {
-    const { id } = useParams();
-    const recipe = GetRecipe(id);
+  const { id } = useParams();
+  console.log('Recipe ID:', id);  // Log the recipe ID
+  const { recipe, loading, error } = GetRecipe(id);
+  console.log('Recipe Data:', recipe);  // Log the fetched recipe data
   
     if (!recipe) {
       return <div className="error-message">Recipe not found.</div>;
@@ -21,5 +23,7 @@ const RecipeDetails = () => {
       </div>
     );
 };
+
+
 
 export default RecipeDetails;
