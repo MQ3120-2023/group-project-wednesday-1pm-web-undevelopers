@@ -77,3 +77,10 @@ p {
     font-size: 24px;
     font-weight: bold;
 }
+.meal-ingredients {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 10px;
+    list-style-type: none;
+    padding: 0;
+}

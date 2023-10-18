@@ -34,13 +34,13 @@ const RecipeDetails = () => {
             <img src={recipe.strMealThumb} alt={recipe.strMeal} className="meal-image" />
             <h1>{recipe.strMeal}</h1>
             <h3>Ingredients:</h3>
-            <ul>
+            <ul className = "meal-ingredients"> 
                 {ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
                 ))}
             </ul>
             <h3>Instructions:</h3>
-            <p>{recipe.strInstructions}</p>
+            <p className="meal-instructions">{recipe.strInstructions}</p>
         </div>
     );
 };
