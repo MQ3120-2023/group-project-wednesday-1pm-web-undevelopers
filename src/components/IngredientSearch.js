@@ -7,6 +7,7 @@ import "../styling/RecipeList.css";
 const IngredientSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [recipes, setRecipes] = useState([]);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 10;
 
@@ -19,8 +20,10 @@ const IngredientSearch = () => {
           `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`
         );
         setRecipes(response.data.meals || []);
+        setError(null); //clearing the error state if the call is successful
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError('Failed to fetch recipes. Please try again later.'); //updating the error state
       }
     };
     fetchRecipes();
@@ -43,8 +46,10 @@ const IngredientSearch = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search for recipes..."
       />
-      {currentRecipes.length > 0 ? (
-        currentRecipes.map((r) => (
+      {error ? (  // Displaying the error message conditionally
+        <p className="error-message">{error}</p>
+      ) : recipes.length > 0 ? (
+        recipes.map((r) => (
           <Link
             to={`/recipe/${r.idMeal}`}
             key={r.idMeal}
