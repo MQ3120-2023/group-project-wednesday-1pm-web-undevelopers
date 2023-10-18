@@ -1,21 +1,14 @@
+/* Container for the entire recipe details */
 .recipe-details {
-    font-family: 'Arial', sans-serif;
     max-width: 800px;
-    margin: 40px auto;
+    margin: auto;
     padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ccc;
     border-radius: 10px;
-    background-color: #ffffff;
-    display: flex;
-    gap: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.meal-image {
-    flex: 1;
-    max-width: 30%;
-    height: auto;
-    border-radius: 10px;
-}
 
 .recipe-info {
     flex: 2;
@@ -46,4 +39,41 @@
 
 .add-to-favorites:hover {
     background-color: #234b72;
+}
+
+
+.meal-image {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+p {
+    line-height: 1.6;
+    color: #333;
+}
+
+
+.error-message {
+    color: red;
+    font-weight: bold;
+}
+
+
+.loading {
+    font-size: 24px;
+    font-weight: bold;
 }
