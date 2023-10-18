@@ -6,7 +6,7 @@
   background-color: #e5e9f4;
   color: white;
   border-radius: 25px;
-  padding: 25px;
+  padding: 10px;
   margin: 25px;
   display: flex;
   justify-content: space-between;
@@ -16,8 +16,9 @@
 .nav-links {
   display: flex;
   /* background-color: rgb(6, 122, 70); */
-  background-color: rgb(0, 253, 200);
+  background-color: rgb(241 152 63);
   border-radius: 15px;
+  margin-right: 10px;
 }
 
 .nav-link {
@@ -28,27 +29,27 @@ color: black;
 .nav-link1 {
   text-decoration: none; 
   color: black;
-  padding: 25px;
+  padding: 20px;
   transition: background-color 0.3s ease;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
 
 .nav-link1:hover {
-  background-color: rgb(0, 227, 178);
+  background-color: rgb(209, 132, 54);
 }
 
 .nav-link2 {
   text-decoration: none; 
   color: black;
-  padding: 25px;
+  padding: 20px;
   transition: background-color 0.3s ease;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
 .nav-link2:hover {
-  background-color: rgb(0, 227, 178);
+  background-color: rgb(209, 132, 54);
 }
 
 
