@@ -1,29 +1,48 @@
-import { useParams } from "react-router-dom";
-
-import GetRecipe from "../functions/getRecipe";
-import "../styling/RecipeDetails.css";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import GetRecipe from '../functions/getRecipe';
+import '../styling/RecipeDetails.css';
 
 const RecipeDetails = () => {
-  const { id } = useParams();
-  console.log('Recipe ID:', id);  // Log the recipe ID
-  const { recipe, loading, error } = GetRecipe(id);
-  console.log('Recipe Data:', recipe);  // Log the fetched recipe data
-  
-    if (!recipe) {
-      return <div className="error-message">Recipe not found.</div>;
+    const { id } = useParams();
+    const { recipe, loading, error } = GetRecipe(id);
+
+    if (loading) {
+        return <div>Loading...</div>;
     }
-  
+
+    if (error) {
+        return <div className="error-message">{error}</div>;
+    }
+
+    if (!recipe) {
+        return <div className="error-message">Recipe not found.</div>;
+    }
+
+    // Extract ingredients and measures
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) {
+        const ingredient = recipe[`strIngredient${i}`];
+        const measure = recipe[`strMeasure${i}`];
+        if (ingredient && measure) {
+            ingredients.push(`${ingredient} - ${measure}`);
+        }
+    }
+
     return (
-      <div className="recipe-details">
-        <img src={recipe.strMealThumb} alt={recipe.title} className="meal-image" />
-        <ul className="recipe-info">
-          <li className="product-name">{recipe.strMeal}</li>
-          <li><button className="add-to-favorites">Add to Favorites</button></li>
-        </ul>
-      </div>
+        <div className="recipe-details">
+            <img src={recipe.strMealThumb} alt={recipe.strMeal} className="meal-image" />
+            <h1>{recipe.strMeal}</h1>
+            <h3>Ingredients:</h3>
+            <ul>
+                {ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                ))}
+            </ul>
+            <h3>Instructions:</h3>
+            <p>{recipe.strInstructions}</p>
+        </div>
     );
 };
-
-
 
 export default RecipeDetails;
