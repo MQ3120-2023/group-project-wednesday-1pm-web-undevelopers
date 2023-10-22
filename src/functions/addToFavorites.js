@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-const AddToFavorites = (recipe) => {
+const favoritesURL = 'http://localhost:3001/api/favorites/';
+
+const AddToFavorites = () => { // Removed unused recipe prop
     const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        axios.post('/api/favorites', { recipe })
+        axios.get(favoritesURL)
             .then(response => {
                 setFavorites(response.data);
             })
@@ -19,13 +21,11 @@ const AddToFavorites = (recipe) => {
             <h2>Favorites:</h2>
             <ul>
                 {favorites.map((favorite, index) => (
-                    <li key={index}>{favorite}</li>
+                    <li key={index}>{favorite.name}</li>  // Access name property
                 ))}
             </ul>
         </div>
     );
 };
-
-
 
 export default AddToFavorites;

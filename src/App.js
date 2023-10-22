@@ -49,7 +49,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/Ingredient-Search" element={<IngredientSearch />} />
       <Route path="/recipe/:id" element={<RecipeDetails />} />
-      <Route path="/favorites" element={<addToFavorites />} />
+      <Route path="/favorites" element={<AddToFavorites />} />
     </Routes>
   </Router>
 </div>
