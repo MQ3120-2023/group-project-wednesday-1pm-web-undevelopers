@@ -6,7 +6,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+const rawData = fs.readFileSync("server/tempFavorites.json");
+const data = JSON.parse(rawData);
 
 app.get("/", (req, res) => {
     res.send('<h1>Welcome to the backend</h1>');
@@ -21,6 +22,10 @@ app.get("/api/recipe/:id", (req, res) => {
     } else {
         res.status(404).send("Product not found."); // if false send a 404 error
     }
+});
+
+app.get("/api/favorites", (req, res) => {
+    res.json(data.favorites);
 });
 
 const PORT = process.env.PORT || 3001;

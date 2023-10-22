@@ -1,15 +1,31 @@
-function addToFavorites(recipe) {
-    // Get the current list of favorite recipes from local storage
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-    // Check if the recipe is already in the favorites list
-    let index = favorites.findIndex(fav => fav.id === recipe.id);
+const AddToFavorites = (recipe) => {
+    const [favorites, setFavorites] = useState([]);
 
-    if (index === -1) {
-        // If the recipe is not already in the favorites list, add it
-        favorites.push(recipe);
+    useEffect(() => {
+        axios.post('/api/favorites', { recipe })
+            .then(response => {
+                setFavorites(response.data);
+            })
+            .catch(error => {
+                console.error("Error fetching favorites", error);
+            });
+    }, []);
 
-        // Save the updated favorites list to local storage
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-    }
-}
+    return (
+        <div>
+            <h2>Favorites:</h2>
+            <ul>
+                {favorites.map((favorite, index) => (
+                    <li key={index}>{favorite}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+
+
+export default AddToFavorites;

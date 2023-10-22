@@ -3,6 +3,7 @@ import "./App.css";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
 import IngedientSearch from "./components/IngredientSearch";
+import AddToFavorites from "./functions/addToFavorites";
 
 import axios from "axios";
 import React, { useState } from "react";
@@ -48,6 +49,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/Ingredient-Search" element={<IngredientSearch />} />
       <Route path="/recipe/:id" element={<RecipeDetails />} />
+      <Route path="/favorites" element={<addToFavorites />} />
     </Routes>
   </Router>
 </div>
