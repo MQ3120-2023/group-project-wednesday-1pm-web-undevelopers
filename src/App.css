@@ -88,8 +88,19 @@ button:hover {
   background-color: #F1D14F;
 }
 
-p {
-  color: red;
-  margin-top: 10px;
+section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 25px;
 }
+
+footer {
+  background-color: rgb(241 152 63);
+  color: black;
+  text-align: center;
+  padding: 1em 0;
+}
+
 
