@@ -1,15 +1,11 @@
 .recipe-container {
+    max-width: 800px;
     border-radius: 25px;
     padding: 10px;
-    margin: 25px;
+    margin: 25px auto;
     background-color: #e5e9f4;
     font-family: 'Quicksand', sans-serif;
     font-weight: bold;
-    background-color: #f9f9fa;
-    background: radial-gradient(#ffdfc8 20%, transparent 21% ,transparent 79%, #ffdfc8 80%);
-    background-size: 3em 3em;
-    background-color: #ffffff;
-    background-attachment: fixed;
 }
 
 .recipe-container h1 {
