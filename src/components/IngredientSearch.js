@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styling/RecipeList.css";
 
-
 const IngredientSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [recipes, setRecipes] = useState([]);
@@ -20,10 +19,10 @@ const IngredientSearch = () => {
           `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`
         );
         setRecipes(response.data.meals || []);
-        setError(null); //clearing the error state if the call is successful
+        setError(null); // Clearing the error state if the call is successful
       } catch (error) {
         console.error("Error fetching data:", error);
-        setError('Failed to fetch recipes. Please try again later.'); //updating the error state
+        setError('Failed to fetch recipes. Please try again later.'); // Updating the error state
       }
     };
     fetchRecipes();
@@ -38,7 +37,7 @@ const IngredientSearch = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="recipe-container">
+    <div className="recipe-container"> {/* Updated the class name */}
       <h1>Search By Ingredient</h1>
       <input
         type="text"
@@ -46,10 +45,10 @@ const IngredientSearch = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search for recipes..."
       />
-      {error ? (  // Displaying the error message conditionally
+      {error ? (
         <p className="error-message">{error}</p>
       ) : recipes.length > 0 ? (
-        recipes.map((r) => (
+        currentRecipes.map((r) => (
           <Link
             to={`/recipe/${r.idMeal}`}
             key={r.idMeal}
