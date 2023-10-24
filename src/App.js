@@ -13,46 +13,48 @@ import IngredientSearch from "./components/IngredientSearch";
 const Home = () => {
   return (
     <div>
-      <RecipeList />
-    </div>
-  );
-};
-
-const Menu = () => {
-  return (
-    <div>
-      <IngedientSearch />
+      <login />
     </div>
   );
 };
 
 function App() {
   return (
-<div className="App">
-  <Router>
-    <nav className="navbar">
-      <a className="navbar-brand" href="/">
-        <div className="logo-image">
-          <img src={logo} alt="MEALBROS" className="logo"/>
-        </div>
-      </a>
-      <div className="nav-links">
-      <div className="nav-link1">
-        <Link className="nav-link" to="/">Home</Link>
-        </div>
-        <div className="nav-link2">
-        <Link className="nav-link" to="/Ingredient-Search">Ingredient Search</Link>
-        </div>
-      </div>
-    </nav>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Ingredient-Search" element={<IngredientSearch />} />
-      <Route path="/recipe/:id" element={<RecipeDetails />} />
-      <Route path="/favorites" element={<AddToFavorites />} />
-    </Routes>
-  </Router>
-</div>
+    <div className="App">
+      <Router>
+        <nav className="navbar">
+          <a className="navbar-brand" href="/">
+            <div className="logo-image">
+              <img src={logo} alt="MEALBROS" className="logo" />
+            </div>
+          </a>
+          <div className="nav-links">
+            <div className="nav-link1">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </div>
+            <div className="nav-link2">
+              <Link className="nav-link" to="/ingredient-search">
+                Ingredient Search
+              </Link>
+            </div>
+            <div className="nav-link2">
+              <Link className="nav-link" to="/recipe-search">
+                Recipe Search 
+              </Link>
+            </div>
+          </div>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ingredient-search" element={<IngredientSearch />} />
+          <Route path="/recipe-search" element={<RecipeList />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route path="/favorites" element={<AddToFavorites />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
