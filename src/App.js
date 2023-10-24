@@ -46,7 +46,7 @@ function App() {
 const Home = () => {
   return (
     <div className="home-container">
-      <h1>Welcome to MealBro's!</h1>
+      <h1>Welcome to MealBros!</h1>
       <Login />
       <section className="about-section">
         <h2>About Us</h2>

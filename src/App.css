@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Quicksand', sans-serif;
+}
 .navbar {
   background-color: #e5e9f4;
   color: white;
@@ -102,5 +107,6 @@ footer {
   text-align: center;
   padding: 1em 0;
 }
+
 
 
