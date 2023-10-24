@@ -77,30 +77,12 @@ input {
   transition: border-color 0.3s ease;
 }
 
-/* Button styling */
-button {
-  width: 75%;
-  border-radius: 25px;
-  padding: 10px;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: bold;
-  padding: 13px 16px;
-  background-color: rgb(241 152 63);
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  color: black;
-}
 
 container {
   border-color: rgb(241 152 63);
   outline: none;
 }
 
-button:hover {
-  background-color: #F1D14F;
-}
 
 section{
   display: flex;

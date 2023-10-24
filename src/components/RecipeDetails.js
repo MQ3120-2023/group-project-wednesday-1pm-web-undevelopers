@@ -2,8 +2,12 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import GetRecipe from '../functions/getRecipe';
 import '../styling/RecipeDetails.css';
+import { useState } from 'react';
+import {MdOutlineFavoriteBorder, MdOutlineFavorite} from 'react-icons/md';
 
 const RecipeDetails = () => {
+    const [isClicked, setIsClicked] = useState(false);
+
     const { id } = useParams();
     const { recipe, loading, error } = GetRecipe(id);
 
@@ -33,6 +37,11 @@ const RecipeDetails = () => {
         <div className="recipe-details">
             <img src={recipe.strMealThumb} alt={recipe.strMeal} className="meal-image" />
             <h1 className="meal-name">{recipe.strMeal}</h1>
+            <button className='fav-button' onClick={() => setIsClicked(!isClicked)}>
+                <span className='icon'>
+                    {isClicked ? <MdOutlineFavoriteBorder size="30px"/> : <MdOutlineFavorite size="30px"/>}
+                </span>
+            </button>
             <h3>Ingredients:</h3>
             <ul className = "meal-ingredients"> 
                 {ingredients.map((ingredient, index) => (
