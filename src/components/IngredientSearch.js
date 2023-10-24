@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Pagination from '@mui/material/Pagination';
+import { Box } from '@mui/material';
 import "../styling/RecipeList.css";
 
 const IngredientSearch = () => {
@@ -33,8 +35,9 @@ const IngredientSearch = () => {
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handleChange = (event, value) => {
+    setCurrentPage(value);
+  }
 
   return (
     <div className="recipe-container"> {/* Updated the class name */}
@@ -67,13 +70,9 @@ const IngredientSearch = () => {
 
       {/* Pagination controls */}
       <div className="pagination">
-        {Array.from({ length: Math.ceil(recipes.length / recipesPerPage) }).map(
-          (_, index) => (
-            <button key={index + 1} onClick={() => paginate(index + 1)}>
-              {index + 1}
-            </button>
-          )
-        )}
+        <Box justifyContent={"center"} alignItems={"center"} display={"flex"} sx={{margin: "20px 0px"}}>
+          <Pagination className='buttons' count={Math.ceil(recipes.length / recipesPerPage)} onChange={handleChange}/>
+        </Box>
       </div>
     </div>
   );
