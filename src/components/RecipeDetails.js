@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import GetRecipe from '../functions/getRecipe';
 import '../styling/RecipeDetails.css';
 import { useState } from 'react';
 import {MdOutlineFavoriteBorder, MdOutlineFavorite} from 'react-icons/md';
+import { get } from 'mongoose';
 
-const RecipeDetails = ({onAddToFavorites}) => {
+import { addFavorite } from '../functions/favoriteFunctions';
+
+
+const RecipeDetails = () => {
     const [isClicked, setIsClicked] = useState(false);
     const [isFav, setIsFav] = useState(false);
+    const [favorites, setFavorites] = useState([]);
 
     const { id } = useParams();
     const { recipe, loading, error } = GetRecipe(id);
+
+
 
     if (loading) {
         return <div>Loading...</div>;
@@ -34,11 +41,13 @@ const RecipeDetails = ({onAddToFavorites}) => {
         }
     }
 
+
     const UseBtnPressed = () => {
 
         if(!isFav){
             setIsClicked(!isClicked);
-            onAddToFavorites(recipe);
+            addFavorite(recipe);
+            console.log("sent")
             setIsFav(true);
         } else{
             alert("This recipe is already in your favorites!")
