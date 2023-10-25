@@ -5,8 +5,6 @@ import { removeFavorite } from '../functions/favoriteFunctions';
 
 
 export default function Favorites({favorites}) {
-
-    console.log(favorites)
     return (
         <div>
             <h1>Favorites</h1>

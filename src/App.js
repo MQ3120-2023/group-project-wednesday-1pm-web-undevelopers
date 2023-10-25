@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import Favorites from "./components/Favorites"; 
 
 import { db } from './firebase';
-import { collection, getDocs, addDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, addDoc, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
 
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -18,17 +18,22 @@ const favURL = "http://localhost:3001/api/favorites";
 export const colRef = collection(db, "favorites");
 
 function App() {
-
   const [favorites, setFavorites] = useState([]);
 
+  // useEffect(() => {
+  //     const getFavorites = async () => {
+  //         const data = await getDocs(colRef);
+  //         setFavorites(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+  //     }
+  //     getFavorites();
+  // }, []);
 
-  useEffect(() => {
-      const getFavorites = async () => {
-          const data = await getDocs(colRef);
-          setFavorites(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-      }
-      getFavorites();
-  }, []);
+  onSnapshot(colRef, (snapshot) => {
+    const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+    setFavorites(data);
+    console.log(data);
+  })
+
 
   return (
     <div className="App">
@@ -56,6 +61,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
