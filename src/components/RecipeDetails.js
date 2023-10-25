@@ -5,8 +5,9 @@ import '../styling/RecipeDetails.css';
 import { useState } from 'react';
 import {MdOutlineFavoriteBorder, MdOutlineFavorite} from 'react-icons/md';
 
-const RecipeDetails = () => {
+const RecipeDetails = ({onAddToFavorites}) => {
     const [isClicked, setIsClicked] = useState(false);
+    const [isFav, setIsFav] = useState(false);
 
     const { id } = useParams();
     const { recipe, loading, error } = GetRecipe(id);
@@ -33,15 +34,27 @@ const RecipeDetails = () => {
         }
     }
 
+    const btnPressed = () => {
+      if(!isFav){
+        setIsClicked(!isClicked);
+        onAddToFavorites(recipe);
+        setIsFav(true);
+      } else{
+        alert("This recipe is already in your favorites!")
+      }
+    }
+
     return (
         <div className="recipe-details">
             <img src={recipe.strMealThumb} alt={recipe.strMeal} className="meal-image" />
-            <h1 className="meal-name">{recipe.strMeal}</h1>
-            <button className='fav-button' onClick={() => setIsClicked(!isClicked)}>
-                <span className='icon'>
-                    {isClicked ? <MdOutlineFavoriteBorder size="30px"/> : <MdOutlineFavorite size="30px"/>}
-                </span>
-            </button>
+            <div className='title'>
+              <h1 className="meal-name">{recipe.strMeal}</h1>
+              <button className='fav-button' onClick={() => btnPressed()}>
+                  <span className='icon'>
+                      {isClicked ? <MdOutlineFavorite size="30px"/> : <MdOutlineFavoriteBorder size="30px"/>}
+                  </span>
+              </button>
+            </div>
             <h3>Ingredients:</h3>
             <ul className = "meal-ingredients"> 
                 {ingredients.map((ingredient, index) => (

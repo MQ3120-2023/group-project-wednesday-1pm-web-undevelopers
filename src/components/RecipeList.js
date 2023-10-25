@@ -35,10 +35,6 @@ const RecipeList = () => {
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
-  // const paginate = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
   const handleChange = (event, value) => {
     setCurrentPage(value);
   }

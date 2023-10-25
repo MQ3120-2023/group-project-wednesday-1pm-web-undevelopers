@@ -9,6 +9,10 @@ app.use(express.json());
 const rawData = fs.readFileSync("server/tempFavorites.json");
 const data = JSON.parse(rawData);
 
+let favorites = {
+    "favItems": []
+};
+
 app.get("/", (req, res) => {
     res.send('<h1>Welcome to the backend</h1>');
 });
@@ -25,7 +29,24 @@ app.get("/api/recipe/:id", (req, res) => {
 });
 
 app.get("/api/favorites", (req, res) => {
-    res.json(data.favorites);
+    try{
+        res.json(data.favorites);
+    } catch (error){
+        console.log(error);
+    }
+});
+
+app.post("/api/favorites", (req, res) => {
+    const {strMealThumb, strMeal, idMeal} = req.body;
+
+    const recipe = {
+        strMealThumb: strMealThumb,
+        strMeal: strMeal,
+        idMeal: idMeal
+    }
+
+    data.favorites.push(recipe);
+    res.json(recipe);
 });
 
 const PORT = process.env.PORT || 3001;
