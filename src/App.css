@@ -79,7 +79,7 @@ input {
 
 /* Button styling */
 .login-button {
-  width: 75%;
+  width: 300px;
   border-radius: 25px;
   padding: 10px;
   font-family: 'Quicksand', sans-serif;
