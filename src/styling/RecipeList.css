@@ -48,12 +48,13 @@
     height: 150px;
     object-fit: cover;
     margin-right: 16px;
-    border-radius: 25px;
-    transition: transform .2s ease;
+    border-radius: 15px;
+    transition: transform 0.2s ease;
 }
 
 .recipe-card img:hover {
     transform: scale(1.07);
+    border-radius: 20px;
 }
 
 .recipe-card h2 {
