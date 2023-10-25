@@ -9,7 +9,7 @@ export default function Favorites({favorites}) {
           <h1>Favourites</h1>
           {favorites.length === 0 ? (
             <div className="emptyFavsList">
-              <p>There is nothing in the favorites list.</p>
+              <p>There is nothing in the favourites list.</p>
             </div>
           ) : (
             <div className="favorites-container">
