@@ -1,7 +1,4 @@
-// sessionManager.js
-
-// Define a key to store the session data in local storage
-const SESSION_KEY = 'user_session';
+SESSION_KEY = 'user_session';
 
 
 const setSession = (userData) => {
