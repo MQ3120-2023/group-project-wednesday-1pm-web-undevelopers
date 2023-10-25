@@ -5,7 +5,9 @@ import "../styling/Favourites.css";
 import { removeFavorite } from '../functions/favoriteFunctions';
 
 
+
 export default function Favorites({favorites}) {
+
     return (
         <div>
             <h1>Favourites</h1>

@@ -18,24 +18,17 @@ const favURL = "http://localhost:3001/api/favorites";
 export const colRef = collection(db, "favorites");
 
 function App() {
+
   const [favorites, setFavorites] = useState([]);
 
-  // useEffect(() => {
-  //     const getFavorites = async () => {
-  //         const data = await getDocs(colRef);
-  //         setFavorites(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-  //     }
-  //     getFavorites();
-  // }, []);
-
   onSnapshot(colRef, (snapshot) => {
-    const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-    setFavorites(data);
-    console.log(data);
+      const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setFavorites(data);
+
   })
 
-
   return (
+  
     <div className="App">
       <Router>
         <nav className="navbar">
