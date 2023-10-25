@@ -3,12 +3,12 @@
 
 .App {
   text-align: center;
+  font-family: 'Quicksand', sans-serif;
 }
 
 html {
   max-width: 100%;
   overflow-x: hidden;
-  font-family: 'Quicksand', sans-serif;
 }
 .navbar {
   background-color: #e5e9f4;
@@ -19,7 +19,6 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: 'Quicksand', sans-serif;
   font-weight: bold;
 }
 
@@ -57,7 +56,6 @@ form {
   padding: 25px;
   margin: 25px auto;
   background-color: #e5e9f4;
-  font-family: 'Quicksand', sans-serif;
   font-weight: bold;
 }
 
@@ -82,7 +80,6 @@ input {
   width: 300px;
   border-radius: 25px;
   padding: 10px;
-  font-family: 'Quicksand', sans-serif;
   font-weight: bold;
   padding: 13px 16px;
   background-color: rgb(241 152 63);
