@@ -1,13 +1,23 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
+const sesmanage = require('express-session'); 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use(
+    session({
+        secret: JWT_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    })
+)
 const rawData = fs.readFileSync("server/tempFavorites.json");
 const data = JSON.parse(rawData);
+
+const secretKey = process.env.JWT_SECRET;
 
 let favorites = {
     "favItems": []
