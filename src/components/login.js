@@ -47,7 +47,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="button" onClick={handleLogin}>
+          <button className="login-button" type="button" onClick={handleLogin}>
             Login
           </button>
           {error && <p style={{ color: "red" }}>{error}</p>}
