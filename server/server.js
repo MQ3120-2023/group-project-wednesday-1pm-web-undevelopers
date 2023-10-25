@@ -7,21 +7,17 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(
-    session({
-        secret: JWT_SECRET,
-        resave: false,
-        saveUninitialized: true,
-    })
-)
+// app.use(
+//     session({
+//         secret: JWT_SECRET,
+//         resave: false,
+//         saveUninitialized: true,
+//     })
+// )
 const rawData = fs.readFileSync("server/tempFavorites.json");
 const data = JSON.parse(rawData);
 
 const secretKey = process.env.JWT_SECRET;
-
-let favorites = {
-    "favItems": []
-};
 
 app.get("/", (req, res) => {
     res.send('<h1>Welcome to the backend</h1>');
