@@ -1,10 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { colRef } from '../App';
+import { collection, getDocs, addDoc, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
+import { db } from '../firebase';
 
 import { removeFavorite } from '../functions/favoriteFunctions';
 
 
+
 export default function Favorites({favorites}) {
+
     return (
         <div>
             <h1>Favorites</h1>
