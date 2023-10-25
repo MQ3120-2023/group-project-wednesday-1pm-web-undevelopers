@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 const SESSION_KEY = 'user_session';
-=======
+
 SESSION_KEY = 'user_session';
->>>>>>> parent of 8c84ff8 (Revert "works now")
+
 
 
 const setSession = (userData) => {
