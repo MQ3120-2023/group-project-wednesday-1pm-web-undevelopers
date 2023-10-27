@@ -24,9 +24,7 @@ function App() {
   onSnapshot(colRef, (snapshot) => {
       const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
       setFavorites(data);
-
   })
-
   return (
   
     <div className="App">
@@ -47,7 +45,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/ingredient-search" element={<IngredientSearch />} />
           <Route path="/recipe-search" element={<RecipeList />} />
-          <Route path="/recipe/:id" element={<RecipeDetails />} />
+          <Route path="/recipe/:id" element={<RecipeDetails favorites={favorites}/>} />
           <Route path="/favorites" element={<Favorites favorites={favorites}/>} />
         </Routes>
       </Router>

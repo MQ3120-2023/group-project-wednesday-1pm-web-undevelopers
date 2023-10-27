@@ -2,7 +2,7 @@ import React from 'react';
 import "../styling/Favourites.css";
 import { removeFavorite } from '../functions/favoriteFunctions';
 
-export default function Favorites({favorites}) {
+export default function Favorites({ favorites }) {
 
     return (
         <div>
@@ -17,9 +17,8 @@ export default function Favorites({favorites}) {
                 <div key={fav.id} className="fav-card">
                   <img src={fav.strMealThumb} alt={fav.strMeal} className="fav-image" />
                   <h3 className="fav-name">{fav.strMeal}</h3>
-                  <button className="fav-button" onClick={() => {removeFavorite(fav.id)}}>
-                    Remove
-                  </button>
+                  <button className="fav-button" onClick={() => {removeFavorite(fav.id)}}>Remove</button>
+                  <p>{favorites.idMeal}</p>
                 </div>
               ))
             }

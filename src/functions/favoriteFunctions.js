@@ -1,13 +1,17 @@
 import { db } from '../firebase';
-import { collection, getDocs, addDoc, doc, deleteDoc, set } from 'firebase/firestore';
+import { collection, getDocs, addDoc, doc, deleteDoc, set, setDoc } from 'firebase/firestore';
 import { useState } from 'react';
 
 import { colRef } from '../App';
-import { useEffect } from 'react';
 
 export const addFavorite = async (recipe) => {
     console.log("received")
-    await addDoc(colRef, { strMealThumb:  recipe.strMealThumb, strMeal: recipe.strMeal, idMeal: recipe.idMeal});
+    try{
+        const favoriteRef = doc(colRef, recipe.idMeal);
+        await setDoc(favoriteRef, { strMealThumb:  recipe.strMealThumb, strMeal: recipe.strMeal, idMeal: recipe.idMeal});
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 
