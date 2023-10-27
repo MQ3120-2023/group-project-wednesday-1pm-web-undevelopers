@@ -15,7 +15,7 @@ html {
   background-color: white;
   color: white;
   border-radius: 25px;
-  padding: 10px;
+  padding: 25px;
   margin-bottom: 25px;
   width: 100%;
   display: flex;
@@ -35,7 +35,9 @@ html {
   display: flex;
   /* background-color: rgb(241 152 63); */
   border-radius: 15px;
-  margin-right: 10px;
+  margin-right: 25px;
+  
+  
 }
 
 .nav-link {
@@ -128,6 +130,7 @@ footer {
 
 .App.scrolled .navbar {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0px;
 }
 
 
