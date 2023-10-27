@@ -4,6 +4,7 @@
 .App {
   text-align: center;
   font-family: 'Quicksand', sans-serif;
+  padding: 150px;
 }
 
 html {
@@ -11,23 +12,30 @@ html {
   overflow-x: hidden;
 }
 .navbar {
-  background-color: #e5e9f4;
+  background-color: white;
   color: white;
   border-radius: 25px;
   padding: 10px;
-  margin: 25px;
+  margin-bottom: 25px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease;
+
 }
 
 .nav-links {
   display: flex;
-  background-color: rgb(241 152 63);
+  /* background-color: rgb(241 152 63); */
   border-radius: 15px;
   margin-right: 10px;
-  
 }
 
 .nav-link {
@@ -39,16 +47,19 @@ border-radius: 15px;
 }
 
 .nav-links :hover{
-  background-color: #F1D14F;
+  color: black;
+  /* background-color: #F1D14F; */
+  background-color: rgb(241 152 63);
+  opacity: 0.8;
 }
 
 .logo {
   width: 200px;
-  margin-left: 10px;
+  margin-left: 50px;
+
 }
 
-/* Login.css */
-
+/* Login styling */
 /* Container styling */
 form {
   max-width: 400px;
@@ -113,6 +124,10 @@ footer {
   color: black;
   text-align: center;
   padding: 1em 0;
+}
+
+.App.scrolled .navbar {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 

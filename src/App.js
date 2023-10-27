@@ -20,6 +20,23 @@ export const colRef = collection(db, "favorites");
 function App() {
 
   const [favorites, setFavorites] = useState([]);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   onSnapshot(colRef, (snapshot) => {
       const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
@@ -27,7 +44,7 @@ function App() {
   })
   return (
   
-    <div className="App">
+    <div className={`App ${isScrolled ? 'scrolled' : ''}`}>
       <Router>
         <nav className="navbar">
           <Link className="navbar-brand" to="/">
