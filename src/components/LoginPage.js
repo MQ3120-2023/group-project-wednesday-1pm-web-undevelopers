@@ -46,7 +46,7 @@ export default function LoginPage() {
             // <Welcome />
             <div className="loginPage">
                 hello world
-                <button onClick={logOut}>Sign-out</button>
+                <button className='fav-button'onClick={logOut}>Sign-out</button>
             </div>
         )
     }

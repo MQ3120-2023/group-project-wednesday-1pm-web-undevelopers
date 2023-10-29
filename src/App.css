@@ -20,7 +20,7 @@ html {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   font-weight: bold;
   position: fixed;
   top: 0;
@@ -28,37 +28,45 @@ html {
   right: 0;
   z-index: 1000;
   transition: box-shadow 0.3s ease;
-
 }
+
 
 .nav-links {
   display: flex;
-  /* background-color: rgb(241 152 63); */
-  border-radius: 15px;
-  margin-right: 25px; 
   color: black;
+  margin-left: 20px; 
+}
+
+.log-links {
+  display: flex;
+  color: black;
+  margin-left: auto; 
 }
 
 .nav-link {
-text-decoration: none;
-color: black;
-padding: 1.2em;
-transition: background-color 0.3s ease;
-border-radius: 15px;
+  text-decoration: none;
+  color: black;
+  padding: 1.2em;
+  transition: background-color 0.3s ease;
+  border-radius: 15px;
 }
 
 .nav-links :hover{
   color: black;
-  /* background-color: #F1D14F; */
   background-color: rgb(241 152 63);
-  opacity: 0.8;
+}
+
+.log-links :hover{
+  color: black;
+  background-color: rgb(241 152 63);
 }
 
 .logo {
   width: 200px;
   margin-left: 50px;
-
+  margin-right: 0px;
 }
+
 section{
   display: flex;
   justify-content: center;
