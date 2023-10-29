@@ -5,7 +5,7 @@ import { removeFavorite } from '../functions/favoriteFunctions';
 export default function Favorites({ favorites }) {
 
     return (
-        <div>
+        <div className='favorites'>
           <h1>Favourites</h1>
           {favorites.length === 0 ? (
             <div className="emptyFavsList">
