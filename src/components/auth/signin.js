@@ -10,6 +10,7 @@ function Signin({ onAuth }) {
     const login = () => {
         signInWithEmailAndPassword(auth, email, password)
         .then(() => {
+            console.log("logged in");
             resetInput();
             onAuth();
         })
