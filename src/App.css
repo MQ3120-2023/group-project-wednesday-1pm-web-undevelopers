@@ -4,7 +4,7 @@
 .App {
   text-align: center;
   font-family: 'Quicksand', sans-serif;
-  padding: 150px;
+  padding-top: 175px;
 }
 
 html {
@@ -41,6 +41,7 @@ html {
   display: flex;
   color: black;
   margin-left: auto; 
+  margin-right: 50px;
 }
 
 .nav-link {

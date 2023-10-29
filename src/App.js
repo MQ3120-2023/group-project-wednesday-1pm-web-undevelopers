@@ -58,7 +58,7 @@ function App() {
             <Link className="nav-link" to="/">Home</Link>
             <Link className="nav-link" to="/recipe-search">Recipe Search</Link>
             <Link className="nav-link" to="/ingredient-search">Ingredient Search</Link>
-            <Link className="nav-link" to="/favorites">Favorites</Link>
+            <Link className="nav-link" to="/favorites">Favourites</Link>
           </div>
           <div className="log-links">
             <Link className="nav-link" to="/login">Login</Link>
