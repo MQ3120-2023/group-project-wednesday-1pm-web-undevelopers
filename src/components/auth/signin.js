@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import { useSignInWithGoogle } from "../../functions/googleAuth";
 
 
 function Signin({ onAuth }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const signInWithGoogle = useSignInWithGoogle();
 
     const login = () => {
         signInWithEmailAndPassword(auth, email, password)
@@ -32,15 +34,7 @@ function Signin({ onAuth }) {
             <div className="form">
                 <h1>Sign in</h1>
                 <div className="social-container">
-                    <div className="social">
-                    <i className="fab fa-facebook-f" />
-                    </div>
-                    <div className="social">
-                    <i className="fab fa-google-plus-g" />
-                    </div>
-                    <div className="social">
-                    <i className="fab fa-linkedin-in" />
-                    </div>
+                    <button className="login-with-google-btn" onClick={signInWithGoogle}>Sign In With Google</button>
                 </div>
                 <span>or use your account</span>
                 <input

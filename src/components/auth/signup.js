@@ -27,31 +27,21 @@ function Signup({ onAuth }) {
         <div className="form-container sign-up-container">
             <div className="form">
                 <h1>Create Account</h1>
-                <div className="social-container">
-                <div className="social">
-                    <i className="fab fa-facebook-f" />
+                <div className="registerInput">
+                    <input
+                        type="email"
+                        value={RegEmail}
+                        onChange={(e) => setRegEmail(e.target.value)}
+                        placeholder="Email"
+                    />
+                    <input
+                        type="password"
+                        value={RegPassword}
+                        onChange={(e) => setRegPassword(e.target.value)}
+                        placeholder="Password"
+                    />
+                    <button className="signup-btn" onClick={register}>Sign Up</button>
                 </div>
-                <div className="social">
-                    <i className="fab fa-google-plus-g" />
-                </div>
-                <div className="social">
-                    <i className="fab fa-linkedin-in" />
-                </div>
-                </div>
-                <span>or use your email for registration</span>
-                <input
-                    type="email"
-                    value={RegEmail}
-                    onChange={(e) => setRegEmail(e.target.value)}
-                    placeholder="Email"
-                />
-                <input
-                    type="password"
-                    value={RegPassword}
-                    onChange={(e) => setRegPassword(e.target.value)}
-                    placeholder="Password"
-                />
-                <button className="signup-btn" onClick={register}>Sign Up</button>
             </div>
         </div>
     )
