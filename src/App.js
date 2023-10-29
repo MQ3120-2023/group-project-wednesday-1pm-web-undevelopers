@@ -12,15 +12,23 @@ import { collection, getDocs, addDoc, doc, deleteDoc, onSnapshot } from 'firebas
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import LoginPage from "./components/LoginPage";
 
 const favURL = "http://localhost:3001/api/favorites";
 
 export const colRef = collection(db, "favorites");
 
 function App() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [favorites, setFavorites] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
+  
+  onSnapshot(colRef, (snapshot) => {
+      const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
+      setFavorites(data);
+  })
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,10 +46,6 @@ function App() {
     };
   }, []);
 
-  onSnapshot(colRef, (snapshot) => {
-      const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
-      setFavorites(data);
-  })
   return (
   
     <div className={`App ${isScrolled ? 'scrolled' : ''}`}>
@@ -55,6 +59,7 @@ function App() {
             <Link className="nav-link" to="/recipe-search">Recipe Search</Link>
             <Link className="nav-link" to="/ingredient-search">Ingredient Search</Link>
             <Link className="nav-link" to="/favorites">Favorites</Link>
+            <Link className="nav-link" to="/login">Login</Link>
           </div>
         </nav>
 
@@ -64,6 +69,7 @@ function App() {
           <Route path="/recipe-search" element={<RecipeList />} />
           <Route path="/recipe/:id" element={<RecipeDetails favorites={favorites}/>} />
           <Route path="/favorites" element={<Favorites favorites={favorites}/>} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
       </Router>
     </div>

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBprDDVdLktqBmqAS3p5HfqmprfGlFaIqg",
@@ -16,14 +17,4 @@ const app = initializeApp(firebaseConfig);
 
 //initialise services
 export const db = getFirestore(app);
-
-
-// // collection ref
-// const colRef = collection(db, "favorites");
-
-// // get collection 
-// getDocs(colRef)
-//     .then((snapshot) => {
-//         console.log(snapshot.docs)
-//     })   
-
+export const auth = getAuth(app);
