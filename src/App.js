@@ -56,7 +56,6 @@ function App() {
           </Link>
           <div className="nav-links">
             <Link className="nav-link" to="/">Home</Link>
-            <Link className="nav-link" to="/recipe-search">Recipe Search</Link>
             <Link className="nav-link" to="/ingredient-search">Ingredient Search</Link>
             <Link className="nav-link" to="/favorites">Favourites</Link>
           </div>
@@ -68,7 +67,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/ingredient-search" element={<IngredientSearch />} />
-          <Route path="/recipe-search" element={<RecipeList />} />
           <Route path="/recipe/:id" element={<RecipeDetails favorites={favorites}/>} />
           <Route path="/favorites" element={<Favorites favorites={favorites}/>} />
           <Route path="/login" element={<LoginPage />} />

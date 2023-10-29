@@ -17,8 +17,6 @@ app.use(
 )
 */
 
-const rawData = fs.readFileSync("server/tempFavorites.json");
-const data = JSON.parse(rawData);
 
 const secretKey = process.env.JWT_SECRET;
 
