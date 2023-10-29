@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styling/LoginPage.css"
 import { AuthProvider } from "./auth/auth";
 import Signup from "./auth/signup";
@@ -6,14 +7,14 @@ import Signin from "./auth/signin";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
+export const logOut = () => {
+    signOut(auth);
+};
 
 export default function LoginPage() {
     const [type, setType] = useState("signIn");
     const [isAuth, setIsAuth] = useState(false);
-
-    const logOut = () => {
-        signOut(auth);
-    };
+    const navigate = useNavigate();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -36,6 +37,7 @@ export default function LoginPage() {
 
     const handleAuth = () => {
         setIsAuth(true);
+        navigate("/");
     }
 
     const containerClass =
@@ -54,7 +56,6 @@ export default function LoginPage() {
     return (
         <div className="loginPage">
             <AuthProvider>
-                <h2>Sign in/up Form</h2>
                 <div className={containerClass} id="container">
                     <Signup onAuth={handleAuth}/>
                     <Signin onAuth={handleAuth}/>

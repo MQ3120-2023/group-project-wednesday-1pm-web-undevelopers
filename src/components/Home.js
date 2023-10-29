@@ -7,7 +7,6 @@ const Home = () => {
     return (
         <div className="home-container">
             <RecipeList />
-            <footer>Created by The Undevelopers</footer>
         </div>
     );
 };

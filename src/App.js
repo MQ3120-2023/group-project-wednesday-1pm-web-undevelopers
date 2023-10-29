@@ -5,9 +5,11 @@ import RecipeDetails from "./components/RecipeDetails";
 import IngredientSearch from "./components/IngredientSearch";
 import Home from "./components/Home";
 import Favorites from "./components/Favorites"; 
+import { logOut } from "./components/LoginPage";
 
 import { db } from './firebase';
 import { collection, getDocs, addDoc, doc, deleteDoc, onSnapshot } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -29,6 +31,19 @@ function App() {
       const data = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
       setFavorites(data);
   })
+
+  const [user, setUser] = useState(null);
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [auth]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,7 +75,11 @@ function App() {
             <Link className="nav-link" to="/favorites">Favourites</Link>
           </div>
           <div className="log-links">
-            <Link className="nav-link" to="/login">Login</Link>
+            {user ? (
+              <Link className="nav-link" to="/login" onClick={logOut}>Sign Out</Link>
+            ) : (
+              <Link className="nav-link" to="/login" >Login</Link>
+            )}
           </div>
         </nav>
 
