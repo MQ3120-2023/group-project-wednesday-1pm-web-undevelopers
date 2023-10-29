@@ -9,6 +9,7 @@
 
 .recipe-container h1 {
     text-align: center;
+    margin-top: 32px;
     margin-bottom: 32px;
     display: grid;
 }
