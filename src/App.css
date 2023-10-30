@@ -27,7 +27,8 @@ body{
   background-color: #252525;
   backdrop-filter: blur(10px);
   color: white;
-  border-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   padding: 25px;
   margin-bottom: 25px;
   width: 100%;
