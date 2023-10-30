@@ -1,4 +1,4 @@
-import logo from "./logo.png";
+import logo from "./logo-light.png";
 import "./App.css";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
