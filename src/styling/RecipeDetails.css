@@ -3,7 +3,7 @@
     margin: auto;
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 25px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -41,7 +41,8 @@
 
 .meal-image {
     max-width: 60%;
-    border-radius: 10px;
+    border-radius: 25px;
+    margin: 25px;
     border: 1px solid #e0e0e0;
 }
 
