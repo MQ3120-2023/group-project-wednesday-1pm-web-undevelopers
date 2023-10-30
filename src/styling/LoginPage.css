@@ -11,8 +11,9 @@
     align-items: center;
     flex-direction: column;
     font-family: "Montserrat", sans-serif;
-    height: 63vh;
-    margin: -20px 0 50px;
+    height: 100vh;
+    margin: -175px 0 50px;
+
 }
 
 h1 {
