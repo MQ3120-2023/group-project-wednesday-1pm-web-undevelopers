@@ -6,11 +6,21 @@
   padding-top: 175px;
   background-color: #252525;
   color: white;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  min-height: calc(100vh - 40px);
 }
 
 html {
   max-width: 100%;
   overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+body{
+  height: 100%;
 }
 
 .navbar {
@@ -81,14 +91,6 @@ section {
   flex-direction: column;
   margin: 25px;
 }
-
-footer {
-  background-color: rgb(63, 241, 146);
-  color: black;
-  text-align: center;
-  padding: 1em 0;
-}
-
 .App.scrolled .navbar {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding-top: 0px;
