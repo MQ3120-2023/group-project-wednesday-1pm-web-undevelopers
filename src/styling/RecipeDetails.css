@@ -2,10 +2,11 @@
     max-width: 1100px;
     margin: auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 25px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #333; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+    color: #fff; 
 }
 
 .recipe-info {
@@ -21,12 +22,12 @@
 .product-name {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #f1983f; 
 }
 
 .add-to-favorites {
-    background-color: #2764a0;
-    color: #ffffff;
+    background-color: #2764a0; 
+    color: #fff; 
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -43,7 +44,7 @@
     max-width: 60%;
     border-radius: 25px;
     margin: 25px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #555; 
 }
 
 ul {
@@ -52,26 +53,27 @@ ul {
 }
 
 .meal-ingredients li {
-    background-color: #f9f9f9;
+    background-color: #444; 
     margin: 5px 0;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #ebebeb;
+    border: 1px solid #666; 
 }
 
 p {
     line-height: 1.6;
-    color: #333;
+    color: #fff; 
 }
 
 .error-message {
-    color: red;
+    color: #f1983f; 
     font-weight: bold;
 }
 
 .loading {
     font-size: 24px;
     font-weight: bold;
+    color: #fff; 
 }
 
 .meal-ingredients {
@@ -83,19 +85,19 @@ p {
 }
 
 .meal-instructions {
-    width: 100%; 
+    width: 100%;
     padding: 0;
     text-align: left;
-    background-color: #f9f9f9;
+    background-color: #444;
     border-radius: 10px;
-    border: 1px solid #ebebeb;
+    border: 1px solid #666; 
 }
 
-.meal-instructions li{
+.meal-instructions li {
     padding: 10px;
 }
 
-.title{
+.title {
     flex: 2;
     display: flex;
     flex-direction: row;

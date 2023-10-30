@@ -1,18 +1,20 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Advent+Pro&family=Quicksand:wght@500;600&display=swap');
 
 .App {
   text-align: center;
   font-family: 'Quicksand', sans-serif;
   padding-top: 175px;
+  background-color: #252525;
+  color: white;
 }
 
 html {
   max-width: 100%;
   overflow-x: hidden;
 }
+
 .navbar {
-  background-color: #ffffffe8;
+  background-color: #252525;
   backdrop-filter: blur(10px);
   color: white;
   border-radius: 25px;
@@ -21,7 +23,7 @@ html {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center; 
+  align-items: center;
   font-weight: bold;
   position: fixed;
   top: 0;
@@ -31,24 +33,23 @@ html {
   transition: box-shadow 0.3s ease;
 }
 
-
 .nav-links {
   display: flex;
   color: black;
-  margin-left: 20px; 
+  margin-left: 20px;
   transition: box-shadow ease 0.2s;
 }
 
 .log-links {
   display: flex;
   color: black;
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: 50px;
 }
 
 .nav-link {
   text-decoration: none;
-  color: black;
+  color: white;
   padding: 1.2em;
   transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
   border-radius: 15px;
@@ -56,16 +57,12 @@ html {
 }
 
 .nav-link:hover {
-  color: black;
   background-color: rgb(241, 152, 63);
   box-shadow: 0 20px 80px -10px rgb(241, 152, 63);
   transform: translate(0, -3px);
 }
 
-
-
-.log-links :hover{
-  color: black;
+.log-links :hover {
   background-color: rgb(241, 152, 63);
   box-shadow: 0 20px 80px -10px rgb(241, 152, 63);
   transform: translate(0, -3px);
@@ -77,7 +74,7 @@ html {
   margin-right: 0px;
 }
 
-section{
+section {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +83,7 @@ section{
 }
 
 footer {
-  background-color: rgb(241 152 63);
+  background-color: rgb(63, 241, 146);
   color: black;
   text-align: center;
   padding: 1em 0;
