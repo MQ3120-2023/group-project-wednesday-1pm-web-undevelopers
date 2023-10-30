@@ -12,7 +12,8 @@ html {
   overflow-x: hidden;
 }
 .navbar {
-  background-color: white;
+  background-color: #ffffffe8;
+  backdrop-filter: blur(10px);
   color: white;
   border-radius: 25px;
   padding: 25px;
