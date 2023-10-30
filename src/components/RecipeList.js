@@ -6,7 +6,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styling/RecipeList.css";
 
+import { styled } from '@mui/system';
 
+const WhitePagination = styled(Pagination)({
+  '& .MuiButtonBase-root': {
+    color: '#fff',
+  },
+  '& .Mui-selected': {
+    backgroundColor: '#fff',
+    color: '#333'
+  },
+});
 
 
 const RecipeList = () => {
@@ -35,10 +45,6 @@ const RecipeList = () => {
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
-  // const paginate = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
-
   const handleChange = (event, value) => {
     setCurrentPage(value);
   }
@@ -60,7 +66,6 @@ const RecipeList = () => {
             <div key={r.idMeal} className="recipe-card">
               <img src={r.strMealThumb} alt={r.strMeal} />
               <h2>{r.strMeal}</h2>
-              {/* Add more details as needed */}
             </div>
           </Link>
         ))
@@ -71,7 +76,7 @@ const RecipeList = () => {
       {recipes.length > recipesPerPage && (
         <div className="pagination">
           <Box justifyContent={"center"} alignItems={"center"} display={"flex"} sx={{margin: "20px 0px"}}>
-            <Pagination className='buttons' count={Math.ceil(recipes.length / recipesPerPage)} onChange={handleChange}/>
+            <WhitePagination className='buttons' count={Math.ceil(recipes.length / recipesPerPage)} onChange={handleChange}/>
           </Box>
         </div>
       )}
