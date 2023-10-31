@@ -99,3 +99,14 @@ section {
   padding-bottom: 0px;
   width: 100%;
 }
+
+.nav-link span {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.nav-link .MuiSvgIcon-root {  /* This targets the Material-UI icon */
+  margin-left: 5px;  /* Add some space between text and icon */
+  line-height: 1;
+}

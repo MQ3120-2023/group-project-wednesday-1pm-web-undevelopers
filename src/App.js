@@ -110,11 +110,11 @@ function App() {
           <div className="log-links">
             {user ? (
               <Link className="nav-link" to="/login" onClick={logOut}>
-                Sign Out
+                <span>Sign Out <LogoutIcon /></span>
               </Link>
             ) : (
               <Link className="nav-link" to="/login">
-                Login
+                <span>Login <LoginIcon /></span>
               </Link>
             )}
           </div>
