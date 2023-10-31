@@ -1,5 +1,5 @@
 // Key used to store user session data in local storage
-const SESSION_KEY = 'user_session';
+const SESSION_KEY = "user_session";
 
 // Attempting to reassign a constant value, which is not allowed in JavaScript
 // SESSION_KEY = 'user_session';

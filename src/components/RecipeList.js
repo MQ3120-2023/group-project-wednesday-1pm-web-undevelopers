@@ -1,22 +1,22 @@
 // Importing necessary dependencies
-import Pagination from '@mui/material/Pagination';
-import { Box } from '@mui/material';
+import Pagination from "@mui/material/Pagination";
+import { Box } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styling/RecipeList.css";
 
 // Importing styling utilities from Material-UI
-import { styled } from '@mui/system';
+import { styled } from "@mui/system";
 
 // Custom styling for Pagination component
 const WhitePagination = styled(Pagination)({
-  '& .MuiButtonBase-root': {
-    color: '#fff',
+  "& .MuiButtonBase-root": {
+    color: "#fff",
   },
-  '& .Mui-selected': {
-    backgroundColor: '#fff',
-    color: '#333'
+  "& .Mui-selected": {
+    backgroundColor: "#fff",
+    color: "#333",
   },
 });
 
@@ -35,13 +35,13 @@ const RecipeList = () => {
         const response = await axios.get(
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
         );
-        console.log('Recipes Response:', response.data);  
-        setRecipes(response.data.meals || []);  // Set recipes state
+        console.log("Recipes Response:", response.data);
+        setRecipes(response.data.meals || []); // Set recipes state
       } catch (error) {
-        console.error("Error fetching data:", error);  
+        console.error("Error fetching data:", error);
       }
     };
-    fetchRecipes();  
+    fetchRecipes();
   }, [searchTerm]);
 
   // Calculate the range of recipes to display on the current page
@@ -52,7 +52,7 @@ const RecipeList = () => {
   // Handle page change event
   const handleChange = (event, value) => {
     setCurrentPage(value);
-  }
+  };
 
   // Rendering the RecipeList component
   return (
@@ -68,7 +68,11 @@ const RecipeList = () => {
       {/* Displaying the current recipes or a message if none are found */}
       {currentRecipes.length > 0 ? (
         currentRecipes.map((r) => (
-          <Link to={`/recipe/${r.idMeal}`} key={r.idMeal} className="recipe-link">
+          <Link
+            to={`/recipe/${r.idMeal}`}
+            key={r.idMeal}
+            className="recipe-link"
+          >
             <div key={r.idMeal} className="recipe-card">
               <img src={r.strMealThumb} alt={r.strMeal} />
               <h2>{r.strMeal}</h2>
@@ -83,8 +87,17 @@ const RecipeList = () => {
       {recipes.length > recipesPerPage && (
         <div className="pagination">
           {/* Styling the Pagination component */}
-          <Box justifyContent={"center"} alignItems={"center"} display={"flex"} sx={{margin: "20px 0px"}}>
-            <WhitePagination className='buttons' count={Math.ceil(recipes.length / recipesPerPage)} onChange={handleChange}/>
+          <Box
+            justifyContent={"center"}
+            alignItems={"center"}
+            display={"flex"}
+            sx={{ margin: "20px 0px" }}
+          >
+            <WhitePagination
+              className="buttons"
+              count={Math.ceil(recipes.length / recipesPerPage)}
+              onChange={handleChange}
+            />
           </Box>
         </div>
       )}
