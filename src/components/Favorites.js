@@ -5,7 +5,7 @@ import { removeFavorite } from "../functions/favoriteFunctions";
 
 export default function Favorites({ favorites }) {
   const handleRemoveClick = (event, id) => {
-    event.stopPropagation(); // Prevent click event from propagating up to the card
+    event.stopPropagation();
     removeFavorite(id);
   };
 
@@ -20,7 +20,6 @@ export default function Favorites({ favorites }) {
         <div className="favorites-container">
           {favorites.map((fav) => (
             <div key={fav.id} className="fav-card">
-              {/* Wrap the content of the card in a Link component */}
               <Link to={`/recipe/${fav.id}`} className="fav-content">
                 <img
                   src={fav.strMealThumb}
@@ -29,7 +28,6 @@ export default function Favorites({ favorites }) {
                 />
                 <h3 className="fav-name">{fav.strMeal}</h3>
               </Link>
-              {/* Separate Remove button, not wrapped in Link */}
               <button
                 className="fav-button"
                 onClick={(event) => handleRemoveClick(event, fav.id)}
