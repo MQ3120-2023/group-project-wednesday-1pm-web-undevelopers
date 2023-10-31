@@ -1,9 +1,9 @@
 import { onAuthStateChanged } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { auth } from "../../firebase";
 
 // Create a context for authentication
-export const AuthContext = React.createContext();
+export const AuthContext = createContext();
 
 // Authentication provider component
 export const AuthProvider = ({ children }) => {
@@ -14,10 +14,13 @@ export const AuthProvider = ({ children }) => {
   // Effect to listen for changes in the authentication state
   useEffect(() => {
     // Use onAuthStateChanged to observe changes in the user's login status
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user); // Set the current user based on the authentication state
       setLoading(false); // Update loading status once the authentication state is determined
     });
+
+    // Cleanup the subscription
+    return () => unsubscribe();
   }, []);
 
   // Render a loading message while waiting for the authentication state
@@ -41,6 +44,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         currentUser,
+        userId: currentUser?.uid //assign ids to the context
       }}
     >
       {children}
