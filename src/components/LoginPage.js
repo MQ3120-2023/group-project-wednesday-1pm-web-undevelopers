@@ -7,6 +7,7 @@ import Signin from "./auth/signin";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
+
 export const logOut = () => {
   signOut(auth);
 };
@@ -45,7 +46,6 @@ export default function LoginPage() {
 
   if (isAuth) {
     return (
-      // <Welcome />
       <div className="loginPage">
         hello world
         <button className="fav-button" onClick={logOut}>
@@ -66,7 +66,7 @@ export default function LoginPage() {
               <div className="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
                 <p>
-                  To keep connected with us please login with your personal info
+                  To save all of you favourite meals please login
                 </p>
                 <button
                   className="ghost"
@@ -78,7 +78,7 @@ export default function LoginPage() {
               </div>
               <div className="overlay-panel overlay-right">
                 <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
+                <p>Enter your details and start saving all of you favourites</p>
                 <button
                   className="ghost "
                   id="signUp"

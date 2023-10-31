@@ -1,6 +1,7 @@
 // Importing React and the AuthProvider from the authentication module
 import React from "react";
 import { AuthProvider } from "./auth/auth";
+
 // Importing the RecipeList component
 import RecipeList from "./RecipeList";
 
