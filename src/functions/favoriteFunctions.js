@@ -1,21 +1,16 @@
 import { db } from "../firebase";
 import {
-  collection,
-  getDocs,
-  addDoc,
+
   doc,
   deleteDoc,
   setDoc,
 } from "firebase/firestore";
-import { useState } from "react";
-
-import { colRef } from "../App";
 
 // Function to add a recipe to favorites
-export const addFavorite = async (recipe) => {
+export const addFavorite = async (userId, recipe) => {
   console.log("received");
   try {
-    const favoriteRef = doc(colRef, recipe.idMeal); // Create a reference to the document with the recipe ID
+    const favoriteRef = doc(db, "favorites", userId, recipe.idMeal); // Create a reference to the document with the recipe ID
     await setDoc(favoriteRef, {
       strMealThumb: recipe.strMealThumb,
       strMeal: recipe.strMeal,
@@ -27,7 +22,7 @@ export const addFavorite = async (recipe) => {
 };
 
 // Function to remove a recipe from favorites
-export const removeFavorite = async (id) => {
-  const userDoc = doc(db, "favorites", id); // Create a reference to the document with the recipe ID
+export const removeFavorite = async (userId, id) => {
+  const userDoc = doc(db, "favorites", userId, "userFavorites", id); // Create a reference to the document with the recipe ID
   await deleteDoc(userDoc); // Delete the document with the provided ID
 };

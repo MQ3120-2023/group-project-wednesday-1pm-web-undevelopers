@@ -44,11 +44,22 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Listening for changes in the 'favorites' collection in Firestore
-  onSnapshot(colRef, (snapshot) => {
-    const data = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    setFavorites(data);
-  });
+  /* 
+  Listening for changes in the 'favorites' collection in Firestore 
+  and to make favorites user-specific
+  */
+  const fetchUserFavorites = (userId) => {
+    if(!userId){
+      setFavorites([]);
+      return;
+    }
+
+    const userFavRef = collection(db, "favorites", userId, "userFavorites");
+    onSnapshot(userFavRef, (snapshot) => {
+      const fav = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setFavorites(fav);
+    });
+  };
 
   // State for user authentication
   const [user, setUser] = useState(null);
@@ -58,6 +69,11 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if(currentUser) {
+        fetchUserFavorites(currentUser.uid); //favorites of the currnt user
+      } else {
+        setFavorites([]); //clear favorites when signed out
+      }
     });
 
     // Unsubscribe when component unmounts
