@@ -1,4 +1,4 @@
-// import * as React from 'react';
+// Importing necessary dependencies
 import Pagination from '@mui/material/Pagination';
 import { Box } from '@mui/material';
 import React, { useState, useEffect } from "react";
@@ -6,8 +6,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styling/RecipeList.css";
 
+// Importing styling utilities from Material-UI
 import { styled } from '@mui/system';
 
+// Custom styling for Pagination component
 const WhitePagination = styled(Pagination)({
   '& .MuiButtonBase-root': {
     color: '#fff',
@@ -18,13 +20,15 @@ const WhitePagination = styled(Pagination)({
   },
 });
 
-
+// RecipeList component
 const RecipeList = () => {
+  // State for the search term, recipes, and current page
   const [searchTerm, setSearchTerm] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 10;
 
+  // Fetch recipes based on the search term when it changes
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
@@ -32,7 +36,7 @@ const RecipeList = () => {
           `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
         );
         console.log('Recipes Response:', response.data);  
-        setRecipes(response.data.meals || []);  // recipes state
+        setRecipes(response.data.meals || []);  // Set recipes state
       } catch (error) {
         console.error("Error fetching data:", error);  
       }
@@ -40,26 +44,28 @@ const RecipeList = () => {
     fetchRecipes();  
   }, [searchTerm]);
 
-
+  // Calculate the range of recipes to display on the current page
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
+  // Handle page change event
   const handleChange = (event, value) => {
     setCurrentPage(value);
   }
 
-
-
+  // Rendering the RecipeList component
   return (
     <div className="recipe-container">
       <h1>Search By Name</h1>
+      {/* Input for entering the search term */}
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Search for recipes..."
       />
+      {/* Displaying the current recipes or a message if none are found */}
       {currentRecipes.length > 0 ? (
         currentRecipes.map((r) => (
           <Link to={`/recipe/${r.idMeal}`} key={r.idMeal} className="recipe-link">
@@ -73,8 +79,10 @@ const RecipeList = () => {
         <p>No recipes found for {searchTerm}</p>
       )}
 
+      {/* Displaying pagination if there are more recipes than the limit per page */}
       {recipes.length > recipesPerPage && (
         <div className="pagination">
+          {/* Styling the Pagination component */}
           <Box justifyContent={"center"} alignItems={"center"} display={"flex"} sx={{margin: "20px 0px"}}>
             <WhitePagination className='buttons' count={Math.ceil(recipes.length / recipesPerPage)} onChange={handleChange}/>
           </Box>
@@ -84,4 +92,5 @@ const RecipeList = () => {
   );
 };
 
+// Exporting the RecipeList component
 export default RecipeList;
