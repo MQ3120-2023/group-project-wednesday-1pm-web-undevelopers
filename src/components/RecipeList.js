@@ -106,17 +106,6 @@ const RecipeList = () => {
   return (
     <div className="recipe-container">
       <h1>Search By Name</h1>
-            {/* Dropdown for selecting a category */}
-            <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-        <option value="">Select a Category</option>
-        {categories.map((category) => (
-          <option key={category.idCategory} value={category.strCategory}>
-            {category.strCategory}
-          </option>
-        ))}
-      </select>
-      {/* Button to clear filters */}
-      <button onClick={clearFilters}>Clear Filters</button>
       {/* Input for entering the search term */}
       <input
         type="text"
