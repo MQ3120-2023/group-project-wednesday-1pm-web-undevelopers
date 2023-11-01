@@ -85,7 +85,7 @@
     padding: 10px 15px;
     margin-bottom: 16px;
     border: 1px solid #555;
-    background-color: #444;
+    background-color: #444444;
     border-radius: 25px;
     font-size: 16px;
     color: #fff;
@@ -121,13 +121,4 @@
 
 .recipe-container .clear-button:hover {
     background-color: #666;
-}
-
-.css-zknwkk-MuiPagination-root .Mui-selected {
-    color: #fff;
-
-}
-
-css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-    background-color: #f0983f;
 }
