@@ -15,8 +15,8 @@ const WhitePagination = styled(Pagination)({
     color: "#fff",
   },
   "& .Mui-selected": {
-    backgroundColor: "#fff",
-    color: "#333",
+    backgroundColor: "#f0983f",
+    color: "fff",
   },
 });
 

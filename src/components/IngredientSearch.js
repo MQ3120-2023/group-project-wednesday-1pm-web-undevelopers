@@ -5,6 +5,20 @@ import Pagination from "@mui/material/Pagination";
 import { Box } from "@mui/material";
 import "../styling/RecipeList.css";
 
+// Importing styling utilities from Material-UI
+import { styled } from "@mui/system";
+
+// Custom styling for Pagination component
+const WhitePagination = styled(Pagination)({
+  "& .MuiButtonBase-root": {
+    color: "#fff",
+  },
+  "& .Mui-selected": {
+    backgroundColor: "#f0983f",
+    color: "fff",
+  },
+});
+
 // IngredientSearch component
 const IngredientSearch = () => {
   // State for search term, recipes, error message, and current page
@@ -78,19 +92,20 @@ const IngredientSearch = () => {
       )}
       {/* Pagination controls */}
       <div className="pagination">
-        <Box
-          justifyContent={"center"}
-          alignItems={"center"}
-          display={"flex"}
-          sx={{ margin: "20px 0px" }}
-        >
-          <Pagination
-            className="buttons"
-            count={Math.ceil(recipes.length / recipesPerPage)}
-            onChange={handleChange}
-          />
-        </Box>
-      </div>
+          {/* Styling the Pagination component */}
+          <Box
+            justifyContent={"center"}
+            alignItems={"center"}
+            display={"flex"}
+            sx={{ margin: "20px 0px" }}
+          >
+            <WhitePagination
+              className="buttons"
+              count={Math.ceil(recipes.length / recipesPerPage)}
+              onChange={handleChange}
+            />
+          </Box>
+        </div>
     </div>
   );
 };

@@ -103,10 +103,8 @@
 .recipe-container button {
     padding: 10px 20px;
     margin-left: 10px;
-    background-color: #f1983f;
     border: none;
     border-radius: 25px;
-    color: #fff;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -123,4 +121,13 @@
 
 .recipe-container .clear-button:hover {
     background-color: #666;
+}
+
+.css-zknwkk-MuiPagination-root .Mui-selected {
+    color: #fff;
+
+}
+
+css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    background-color: #f0983f;
 }
