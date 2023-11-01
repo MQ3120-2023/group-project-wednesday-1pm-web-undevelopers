@@ -152,6 +152,11 @@ input:hover {
     outline: none;
 }
 
+input:focus {
+    border-color: #f1983f; 
+    outline: none;
+}
+
 .container {
     background-color: #000000;
     border-radius: 25px;
