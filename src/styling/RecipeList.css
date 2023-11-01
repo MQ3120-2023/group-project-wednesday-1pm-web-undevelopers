@@ -110,15 +110,15 @@
     transition: background-color 0.2s ease;
 }
 
-.recipe-container button:hover {
-    background-color: #e0872e;
-}
 
+.recipe-container button:hover {
+    background-color: #555;
+}
 
 .recipe-container .clear-button {
     background-color: #555;
 }
 
 .recipe-container .clear-button:hover {
-    background-color: #666;
+    background-color: #3f3f3f;
 }
