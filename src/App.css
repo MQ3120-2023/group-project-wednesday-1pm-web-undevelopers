@@ -11,6 +11,10 @@
   min-height: calc(100vh - 40px);
 }
 
+::selection {
+  background: rgba(241, 152, 63, 0.398);
+}
+
 html {
   max-width: 100%;
   overflow-x: hidden;
