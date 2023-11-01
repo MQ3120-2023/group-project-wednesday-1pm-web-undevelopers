@@ -6,9 +6,8 @@ import { AuthContext } from "./auth/auth";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 
-export default function Favorites() {
+export default function Favorites({favorites}) {
   const { userId } = useContext(AuthContext);
-  const [favorites, setFavorites] = useState([]);
 
 
   const handleRemoveClick = (event, id) => {
