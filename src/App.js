@@ -7,9 +7,10 @@ import IngredientSearch from "./components/IngredientSearch";
 import Home from "./components/Home";
 import Favorites from "./components/Favorites";
 import { logOut } from "./components/LoginPage";
-import LoginIcon from '@mui/icons-material/Login';
-import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from "@mui/icons-material/Login";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { AuthProvider } from "./components/auth/auth";
+import { Helmet } from "react-helmet";
 
 // Importing Firebase and Firestore related functionalities
 import { db } from "./firebase";
@@ -50,7 +51,7 @@ function App() {
   and to make favorites user-specific
   */
   const fetchUserFavorites = (userId) => {
-    if(!userId){
+    if (!userId) {
       setFavorites([]);
       return;
     }
@@ -70,7 +71,7 @@ function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if(currentUser) {
+      if (currentUser) {
         fetchUserFavorites(currentUser.uid); //favorites of the currnt user
       } else {
         setFavorites([]); //clear favorites when signed out
@@ -105,55 +106,64 @@ function App() {
   // Rendering the main component
   return (
     <AuthProvider>
-    <div className={`App ${isScrolled ? "scrolled" : ""}`}>
-      <Router>
-        {/* Navigation bar */}
-        <nav className="navbar">
-          <Link className="navbar-brand" to="/">
-            <img src={logo} alt="MEALBROS" className="logo" />
-          </Link>
-          {/* Navigation links */}
-          <div className="nav-links">
-            <Link className="nav-link" to="/">
-              Home
+      <div className={`App ${isScrolled ? "scrolled" : ""}`}>
+        <Router>
+          <Helmet>
+            <title>MealBros</title>
+            <link rel="icon" href="logo.png" />
+            {/* Add other meta tags, link tags, etc. here */}
+          </Helmet>
+          {/* Navigation bar */}
+          <nav className="navbar">
+            <Link className="navbar-brand" to="/">
+              <img src={logo} alt="MEALBROS" className="logo" />
             </Link>
-            <Link className="nav-link" to="/ingredient-search">
-              Ingredient Search
-            </Link>
-            <Link className="nav-link" to="/favorites">
-              Favourites
-            </Link>
-          </div>
-          {/* Authentication links */}
-          <div className="log-links">
-            {user ? (
-              <Link className="nav-link" to="/login" onClick={logOut}>
-                <span>Sign Out <LogoutIcon /></span>
+            {/* Navigation links */}
+            <div className="nav-links">
+              <Link className="nav-link" to="/">
+                Home
               </Link>
-            ) : (
-              <Link className="nav-link" to="/login">
-                <span>Login <LoginIcon /></span>
+              <Link className="nav-link" to="/ingredient-search">
+                Ingredient Search
               </Link>
-            )}
-          </div>
-        </nav>
+              <Link className="nav-link" to="/favorites">
+                Favourites
+              </Link>
+            </div>
+            {/* Authentication links */}
+            <div className="log-links">
+              {user ? (
+                <Link className="nav-link" to="/login" onClick={logOut}>
+                  <span>
+                    Sign Out <LogoutIcon />
+                  </span>
+                </Link>
+              ) : (
+                <Link className="nav-link" to="/login">
+                  <span>
+                    Login <LoginIcon />
+                  </span>
+                </Link>
+              )}
+            </div>
+          </nav>
 
-        {/* Routing configuration */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/ingredient-search" element={<IngredientSearch />} />
-          <Route
-            path="/recipe/:id"
-            element={<RecipeDetails favorites={favorites} />}
-          />
-          <Route
-            path="/favorites"
-            element={<Favorites favorites={favorites} />}
-          />
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
-      </Router>
-    </div>
+          {/* Routing configuration */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/ingredient-search" element={<IngredientSearch />} />
+            <Route
+              path="/recipe/:id"
+              element={<RecipeDetails favorites={favorites} />}
+            />
+            <Route
+              path="/favorites"
+              element={<Favorites favorites={favorites} />}
+            />
+            <Route path="/login" element={<LoginPage />} />
+          </Routes>
+        </Router>
+      </div>
     </AuthProvider>
   );
 }
