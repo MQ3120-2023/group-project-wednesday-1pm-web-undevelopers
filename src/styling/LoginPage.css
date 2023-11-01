@@ -341,7 +341,7 @@ footer a {
     }
     
     &:active {
-    background-color: #eeeeee;
+    background-color: #555;
     }
     
     &:focus {

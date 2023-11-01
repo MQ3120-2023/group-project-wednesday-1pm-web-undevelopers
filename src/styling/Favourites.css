@@ -45,6 +45,10 @@
   color: #fff;
 }
 
+.fav-name:hover {
+text-decoration: underline;
+}
+
 .fav-button {
   background-color: #f1983f;
   color: #000;
