@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import GetRecipe from "../functions/getRecipe";
 import "../styling/RecipeDetails.css";
 import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
 import { addFavorite } from "../functions/favoriteFunctions";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "./auth/auth";
 
 // RecipeDetails component
 const RecipeDetails = ({ favorites }) => {
+  const { currentUser } = useContext(AuthContext);
   // State for button click and favorite status
-  const [isClicked, setIsClicked] = useState(false);
-  const [isFav, setIsFav] = useState(false);
   const [inFavorites, setInFavorites] = useState(false);
 
   // Getting recipe ID from URL parameters
@@ -26,6 +26,8 @@ const RecipeDetails = ({ favorites }) => {
       setInFavorites(false);
     }
   }, [favorites, recipe]);
+
+
 
   // Loading state
   if (loading) {
@@ -54,14 +56,30 @@ const RecipeDetails = ({ favorites }) => {
 
   // Handling favorite button click
   const handleBtnClick = () => {
+    if (!currentUser) {
+      alert("Please log in to add favorites.");
+      return;
+    }
     if (inFavorites) {
       alert("This recipe is already in your favorites!");
-    } else {
-      setIsClicked(!isClicked);
-      addFavorite(recipe);
-      setIsFav(true);
+      return;
     }
+  
+    // Call addFavorite and wait for it to complete
+    addFavorite(recipe, currentUser.uid)
+      .then(() => {
+        // Update inFavorites state to true after successful addition
+        setInFavorites(true);
+        // Optionally, show a success message to the user
+        alert("Recipe added to favorites!");
+      })
+      .catch((error) => {
+        // Handle any errors here
+        console.error("Error adding to favorites:", error);
+        alert("Failed to add recipe to favorites.");
+      });
   };
+  
 
   // Rendering the RecipeDetails component
   return (

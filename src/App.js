@@ -9,6 +9,7 @@ import Favorites from "./components/Favorites";
 import { logOut } from "./components/LoginPage";
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { AuthProvider } from "./components/auth/auth";
 
 // Importing Firebase and Firestore related functionalities
 import { db } from "./firebase";
@@ -103,6 +104,7 @@ function App() {
 
   // Rendering the main component
   return (
+    <AuthProvider>
     <div className={`App ${isScrolled ? "scrolled" : ""}`}>
       <Router>
         {/* Navigation bar */}
@@ -152,6 +154,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </AuthProvider>
   );
 }
 
