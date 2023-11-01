@@ -34,6 +34,11 @@
     outline: none;
 }
 
+.recipe-container input[type="text"]:hover {
+    border-color: #f1983f; 
+    outline: none;
+}
+
 .recipe-card {
     display: flex;
     align-items: center;

@@ -139,12 +139,17 @@ button.ghost:hover {
 
 input {
     background-color: #555;
-    border: none;
-    padding: 12px 15px;
+    border: 1px solid #555;    padding: 12px 15px;
     margin: 8px 0;
     width: 100%;
     border-radius: 25px;
     color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+input:hover {
+    border-color: #f1983f; 
+    outline: none;
 }
 
 .container {
