@@ -18,11 +18,24 @@
   padding: 20px;
   text-align: center;
   color: #fff;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.fav-card:hover {
+  background-color: #00000090;
+  color: #fff; 
 }
 
 .fav-image {
   max-width: 100%;
   border-radius: 10px;
+  transition: transform 0.2s ease, border-radius 0.2s ease;
+}
+
+.fav-image:hover {
+  transform: scale(1.07);
+  border-radius: 13px;
+  text-decoration: underline;
 }
 
 .fav-name {
