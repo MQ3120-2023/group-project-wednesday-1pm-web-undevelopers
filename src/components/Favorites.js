@@ -15,6 +15,15 @@ export default function Favorites({favorites}) {
     removeFavorite(id,userId);
   };
 
+  if (!userId) {
+    return (
+      <div className="favorites">
+        <h1>Favourites</h1>
+        <p>Please log in to add favourites</p>
+      </div>
+    );
+  }
+
   return (
     <div className="favorites">
       <h1>Favourites</h1>
