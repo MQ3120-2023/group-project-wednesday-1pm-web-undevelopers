@@ -5,6 +5,7 @@ import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "react-icons/md";
 import { addFavorite } from "../functions/favoriteFunctions";
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "./auth/auth";
+import CustomMultiSelect from "./CustomMultiSelect";
 
 // RecipeDetails component
 const RecipeDetails = ({ favorites }) => {

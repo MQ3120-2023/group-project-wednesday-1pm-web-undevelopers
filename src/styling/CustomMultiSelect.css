@@ -1,0 +1,20 @@
+.multi-select-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .multi-select-option {
+    display: flex;
+    align-items: center;
+  }
+  
+  .multi-select-option input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  

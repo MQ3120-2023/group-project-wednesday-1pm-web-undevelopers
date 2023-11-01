@@ -28,11 +28,13 @@ const RecipeList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 10;
 
-   // New variables for categories
+   // New state variables for categories
    const [categories, setCategories] = useState([]);
    const [selectedCategory, setSelectedCategory] = useState("");
-   
- 
+
+   //New state variables for ingredients
+   const [ingredients, setIngredients] = useState([]);
+   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
     // Fetching the categories from the API
     useEffect(() => {
@@ -45,7 +47,22 @@ const RecipeList = () => {
         }
       };
       fetchCategories();
+      
+      
+    //fetching ingredients
+      const fetchIngredients = async () => {
+        try {
+          const response = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+          setIngredients(response.data.meals || []);
+        } catch (error) {
+          console.error("Error fetching ingredients:", error);
+        }
+      };
+      fetchIngredients();
     }, []);
+
+
+    
 
    // Fetching  recipes based on the search term when it changes (inclues category now)
   // Existing useEffect for fetching recipes, modified to include category
@@ -65,7 +82,7 @@ const RecipeList = () => {
       }
     };
     fetchRecipes();
-  }, [searchTerm, selectedCategory]);
+  }, [searchTerm, selectedCategory], selectedIngredients);
 
   // Calculate the range of recipes to display on the current page
   const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -76,6 +93,14 @@ const RecipeList = () => {
   const handleChange = (event, value) => {
     setCurrentPage(value);
   };
+
+    //clear filter
+    const clearFilters = () => {
+      setSelectedCategory("");
+      setSelectedIngredients([]);
+      setSearchTerm("");
+    };
+  
 
   // Rendering the RecipeList component
   return (
@@ -90,6 +115,8 @@ const RecipeList = () => {
           </option>
         ))}
       </select>
+      {/* Button to clear filters */}
+      <button onClick={clearFilters}>Clear Filters</button>
       {/* Input for entering the search term */}
       <input
         type="text"
