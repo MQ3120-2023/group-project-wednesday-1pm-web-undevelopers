@@ -30,6 +30,7 @@ const RecipeDetails = ({ favorites }) => {
 
 
 
+
   // Loading state
   if (loading) {
     return <div>Loading...</div>;
@@ -95,7 +96,6 @@ const RecipeDetails = ({ favorites }) => {
         {/* Favorite button */}
         <button className="fav-button" onClick={() => handleBtnClick()}>
           <span className="icon">
-            {/* Displaying the appropriate favorite icon based on whether the recipe is in favorites */}
             {inFavorites ? (
               <MdOutlineFavorite size="30px" />
             ) : (

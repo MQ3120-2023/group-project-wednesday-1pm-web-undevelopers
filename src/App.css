@@ -74,12 +74,6 @@ body{
   transform: translate(0, -3px);
 }
 
-.log-links :hover {
-  background-color: rgb(241, 152, 63);
-  box-shadow: 0 20px 80px -10px rgb(241, 152, 63);
-  transform: translate(0, -3px);
-}
-
 .logo {
   width: 200px;
   margin-left: 50px;
@@ -104,9 +98,12 @@ section {
   display: flex;
   align-items: center;
   line-height: 1;
+  transform: none !important;
 }
 
 .nav-link .MuiSvgIcon-root {  /* This targets the Material-UI icon */
   margin-left: 5px;  /* Add some space between text and icon */
   line-height: 1;
+  transform: none !important;
 }
+

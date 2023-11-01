@@ -6,22 +6,9 @@ import { AuthContext } from "./auth/auth";
 import { db } from "../firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 
-export default function Favorites() {
+export default function Favorites({favorites}) {
   const { userId } = useContext(AuthContext);
-  const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    if (!userId) return;
-
-    const favsRef = collection(db, 'users', userId, 'favorites');
-
-    const unsubscribe = onSnapshot(favsRef, (snapshot) => {
-      const favs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setFavorites(favs);
-    });
-
-    return () => unsubscribe();
-  }, [userId]);
 
   const handleRemoveClick = (event, id) => {
     event.stopPropagation();

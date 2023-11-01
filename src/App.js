@@ -56,7 +56,7 @@ function App() {
       return;
     }
 
-    const userFavRef = collection(db, "favorites", userId, "userFavorites");
+    const userFavRef = collection(db, "users", userId, "favorites");
     onSnapshot(userFavRef, (snapshot) => {
       const fav = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
       setFavorites(fav);
