@@ -1,11 +1,14 @@
 const express = require("express");
 const cors = require("cors");
+const path = require('path');
+const dotenv = require('dotenv');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static("build"));
+const buildPath = path.join(__dirname, 'build')
+app.use(express.static(buildPath))
 
 // Route for the root endpoint
 app.get("/", (req, res) => {
