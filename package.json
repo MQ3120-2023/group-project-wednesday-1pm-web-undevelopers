@@ -1,6 +1,10 @@
 {
   "name": "group-project-wednesday-1pm-web-undevelopers",
   "version": "0.1.0",
+  "engines": {
+    "npm": "9.6.7",
+    "node": "18.17.1"
+  },
   "private": true,
   "dependencies": {
     "-": "^0.0.1",

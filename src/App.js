@@ -1,7 +1,6 @@
 // Importing necessary dependencies and components
 import logo from "./logo-light.png";
 import "./App.css";
-import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
 import IngredientSearch from "./components/IngredientSearch";
 import Home from "./components/Home";
@@ -16,31 +15,21 @@ import { Helmet } from "react-helmet";
 import { db } from "./firebase";
 import {
   collection,
-  getDocs,
-  addDoc,
-  doc,
-  deleteDoc,
   onSnapshot,
 } from "firebase/firestore";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // Importing Axios for HTTP requests and React hooks for state management
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 
-// API endpoint for favorites
-const favURL = "http://localhost:3001/api/favorites";
 
 // Creating a reference to the 'favorites' collection in Firestore
 export const colRef = collection(db, "favorites");
 
 // Main App component
 function App() {
-  // State for user credentials
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   // State for managing favorites and scrolling behavior
   const [favorites, setFavorites] = useState([]);

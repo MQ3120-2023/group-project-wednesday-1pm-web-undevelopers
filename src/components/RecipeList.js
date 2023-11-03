@@ -29,12 +29,12 @@ const RecipeList = () => {
   const recipesPerPage = 10;
 
    // New state variables for categories
-   const [categories, setCategories] = useState([]);
-   const [selectedCategory, setSelectedCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
    //New state variables for ingredients
-   const [ingredients, setIngredients] = useState([]);
-   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
 
     // Fetching the categories from the API
     useEffect(() => {

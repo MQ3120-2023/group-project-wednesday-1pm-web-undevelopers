@@ -1,10 +1,8 @@
-import React, {useEffect, useState, useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../styling/Favourites.css";
 import { removeFavorite } from "../functions/favoriteFunctions";
 import { AuthContext } from "./auth/auth";
-import { db } from "../firebase";
-import { collection, onSnapshot } from "firebase/firestore";
 
 export default function Favorites({favorites}) {
   const { userId } = useContext(AuthContext);
