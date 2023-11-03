@@ -28,61 +28,22 @@ const RecipeList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const recipesPerPage = 10;
 
-   // New state variables for categories
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-
-   //New state variables for ingredients
-  const [ingredients, setIngredients] = useState([]);
-  const [selectedIngredients, setSelectedIngredients] = useState([]);
-
     // Fetching the categories from the API
     useEffect(() => {
-      const fetchCategories = async () => {
+      const fetchRecipes = async () => {
         try {
-          const response = await axios.get('https://www.themealdb.com/api/json/v1/1/categories.php');
-          setCategories(response.data.categories);
+          const response = await axios.get(
+            `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
+          );
+          console.log('Recipes Response:', response.data);  
+          setRecipes(response.data.meals || []);  // recipes state
         } catch (error) {
-          console.error("Error fetching categories:", error);
+          console.error("Error fetching data:", error);  
         }
       };
-      fetchCategories();
-      
-      
-    //fetching ingredients
-      const fetchIngredients = async () => {
-        try {
-          const response = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
-          setIngredients(response.data.meals || []);
-        } catch (error) {
-          console.error("Error fetching ingredients:", error);
-        }
-      };
-      fetchIngredients();
-    }, []);
+      fetchRecipes();  
+    }, [searchTerm]);
 
-
-    
-
-   // Fetching  recipes based on the search term when it changes (inclues category now)
-  // Existing useEffect for fetching recipes, modified to include category
-  useEffect(() => {
-    const fetchRecipes = async () => {
-      try {
-        let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
-        if (selectedCategory) {
-          url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${selectedCategory}`;
-        } else {
-          url += searchTerm;
-        }
-        const response = await axios.get(url);
-        setRecipes(response.data.meals || []);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchRecipes();
-  }, [searchTerm, selectedCategory], selectedIngredients);
 
   // Calculate the range of recipes to display on the current page
   const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -93,14 +54,6 @@ const RecipeList = () => {
   const handleChange = (event, value) => {
     setCurrentPage(value);
   };
-
-    //clear filter
-    const clearFilters = () => {
-      setSelectedCategory("");
-      setSelectedIngredients([]);
-      setSearchTerm("");
-    };
-  
 
   // Rendering the RecipeList component
   return (

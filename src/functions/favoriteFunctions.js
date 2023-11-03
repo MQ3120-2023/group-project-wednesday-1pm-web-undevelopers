@@ -4,9 +4,6 @@ import {
   deleteDoc,
   setDoc,
 } from "firebase/firestore";
-//import { useState } from "react";
-
-//import { colRef } from "../App";
 
 // Function to add a recipe to favorites
 export const addFavorite = async (recipe, userId) => {
