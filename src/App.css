@@ -10,45 +10,6 @@
   margin-bottom: 0px;
   min-height: calc(100vh - 40px);
 }
-/* Hamburger menu icon style */
-.hamburger-menu {
-  display: none; /* Hide by default */
-  z-index: 1010;
-}
-
-/* Default state for nav-links and log-links */
-.nav-links, .log-links {
-  display: flex; /* Show by default */
-}
-
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-  .hamburger-menu {
-    display: block; /* Show the hamburger menu on small screens */
-  }
-  
-
-  .nav-links, .log-links {
-    display: none; /* Hide the links by default on small screens */
-  }
-
-  .nav-links.visible, .log-links.visible {
-    display: flex; /* Show the links when they are toggled */
-    flex-direction: column; /* Stack them vertically */
-    top: 100%; /* Below the navbar */
-    right: 0; /* Align to the right */
-    background-color: #252525; /* Match the navbar background */
-    width: 100%; /* Full width */
-    /* Add any additional styling for the dropdown menu */
-  }
-}
-
-@media screen and (min-width: 769px) {
-  .nav-links, .log-links {
-    display: flex; /* Ensure links are visible on larger screens */
-  }
-}
-
 
 ::selection {
   background: rgba(241, 152, 63, 0.398);
@@ -66,7 +27,6 @@ html {
 body{
   height: 100%;
 }
-
 
 .navbar {
   background-color: #252525d3;
@@ -117,8 +77,6 @@ body{
   box-shadow: 0 20px 80px -10px rgb(241, 152, 63);
   transform: translate(0, -3px);
 }
-
-
 
 .logo {
   width: 200px;
