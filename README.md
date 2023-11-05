@@ -74,7 +74,7 @@ If the project were to continue, the following steps could be considered:
   - Built session management system, user sessions and maintaining state across various interactions within the app.
   - Accomplished performance optimization, refining both backend queries and frontend operations increasing responsiveness and efficiency.
   - Collaborated with team members to do code reviews, upholding code quality and system reliability.
-  - Developed and tested new features in a dedicated branch on GitHub, ensuring thorough validation before integration into the main application.
+  - Developed and tested new features in a dedicated branch on GitHub
   - Managed GitHub project boards, orchestrating task assignments and progress tracking to keep the team aligned and focused on sprint goals.
   
 
