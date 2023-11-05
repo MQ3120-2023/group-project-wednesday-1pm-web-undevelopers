@@ -25,6 +25,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 
 
+
 // Creating a reference to the 'favorites' collection in Firestore
 export const colRef = collection(db, "favorites");
 
