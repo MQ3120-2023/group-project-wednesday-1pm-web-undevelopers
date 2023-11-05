@@ -69,9 +69,15 @@ If the project were to continue, the following steps could be considered:
   - Provided moral support to the team, fostering a positive and collaborative work environment.
 
 - **Amora:**
-  - Site responsiveness
-  - Authenitication
-  - Project Board
+  - Implementated of error handling strategies, ensuring the app's robustness.
+  - Assisted in the creation of the database schema using Firestore.
+  - Built session management system, user sessions and maintaining state across various interactions within the app.
+  - Accomplished performance optimization, refining both backend queries and frontend operations increasing responsiveness and efficiency.
+  - Collaborated with team members to do code reviews, upholding code quality and system reliability.
+  - Developed and tested new features in a dedicated branch on GitHub, ensuring thorough validation before integration into the main application.
+  - Managed GitHub project boards, orchestrating task assignments and progress tracking to keep the team aligned and focused on sprint goals.
+  
+
 
 ## Communication and Interaction
 
